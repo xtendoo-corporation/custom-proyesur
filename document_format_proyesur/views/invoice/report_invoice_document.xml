@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+        <template
+            id="document_format_proyesur.report_invoice_document_proyesur"
+            inherit_id="account.report_invoice_document"
+        >
+            <xpath expr="//div[@id='informations']/div[@name='origin']" position="replace"/>
+        </template>
+    </data>
+</odoo>
