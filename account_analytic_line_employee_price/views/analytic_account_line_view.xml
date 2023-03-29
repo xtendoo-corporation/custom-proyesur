@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- Copyright 2023 Camilo <Xtendoo, https://xtendoo.es/>.
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).-->
+
+<odoo>
+    <record id="account_analytic_line_tree_employee_cost" model="ir.ui.view">
+        <field name="name">account.analytic.line.tree.employee.cost</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.timesheet_view_tree_user" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='unit_amount']" position="after">
+                <field name="employee_timesheet_cost"  optional="show" widget="monetary" />
+                <field name="employee_timesheet_cost_total" optional="show" sum="Total" widget="monetary" />
+            </xpath>
+        </field>
+    </record>
+
+        <record id="account_analytic_line_tree_employee_cost" model="ir.ui.view">
+        <field name="name">account.analytic.line.tree.employee.cost</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='unit_amount']" position="after">
+                <field name="employee_timesheet_cost" optional="show" widget="monetary" />
+                <field name="employee_timesheet_cost_total" optional="show" sum="Total" widget="monetary" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
