@@ -1,0 +1,309 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_additional_fields
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-02 07:49+0000\n"
+"PO-Revision-Date: 2022-11-02 07:49+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__message_needaction
+msgid "Action Needed"
+msgstr "Acción necesaria"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__activity_ids
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Decoración de excepción de actividad"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__activity_state
+msgid "Activity State"
+msgstr "Estado"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Icono de tipo de actividad"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__message_attachment_count
+msgid "Attachment Count"
+msgstr "Recuento de archivos adjuntos"
+
+#. module: sale_additional_fields
+#: model:ir.model,name:sale_additional_fields.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__display_name
+msgid "Display Name"
+msgstr "Nombre"
+
+#. module: sale_additional_fields
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.view_order_form
+msgid "Este pedido ya ha generado un <b>pedido de compra.</b>"
+msgstr ""
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__date_expiration
+msgid "Expiration date"
+msgstr "Fecha de caducidad"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_purchase_order__upload_date
+#: model:ir.model.fields,field_description:sale_additional_fields.field_sale_order__upload_date
+msgid "Fecha de carga"
+msgstr "Fecha de carga"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_purchase_order__download_date
+#: model:ir.model.fields,field_description:sale_additional_fields.field_sale_order__download_date
+msgid "Fecha de descarga"
+msgstr "Fecha de descarga"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,help:sale_additional_fields.field_licence_car__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Icono de fuente impresionante, p. fa-tareas"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__has_message
+msgid "Has Message"
+msgstr "Tiene mensaje"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__id
+msgid "ID"
+msgstr "ID"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__activity_exception_icon
+msgid "Icon"
+msgstr "Icono"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,help:sale_additional_fields.field_licence_car__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Icono para indicar una actividad de excepción."
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,help:sale_additional_fields.field_licence_car__message_needaction
+#: model:ir.model.fields,help:sale_additional_fields.field_licence_car__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,help:sale_additional_fields.field_licence_car__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si está marcado, los nuevos mensajes requieren su atención."
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__message_is_follower
+msgid "Is Follower"
+msgstr "Seguidor"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_sale_order__is_purchase_order_created
+msgid "Is Purchase Order Created"
+msgstr "Se crea la orden de compra"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__write_uid
+msgid "Last Updated by"
+msgstr "Ultima modificación"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__write_date
+msgid "Last Updated on"
+msgstr "Ultima modificación"
+
+#. module: sale_additional_fields
+#: model:ir.actions.act_window,name:sale_additional_fields.licence_car_action
+#: model:ir.model.fields,field_description:sale_additional_fields.field_purchase_order__licence_car_id
+#: model:ir.model.fields,field_description:sale_additional_fields.field_res_partner__licence_car_ids
+#: model:ir.model.fields,field_description:sale_additional_fields.field_res_users__licence_car_ids
+#: model:ir.model.fields,field_description:sale_additional_fields.field_sale_order__licence_car_id
+msgid "Licence"
+msgstr "Matrícula"
+
+#. module: sale_additional_fields
+#: model:ir.model,name:sale_additional_fields.model_licence_car
+msgid "Licence Car"
+msgstr "Matrícula"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__name
+msgid "Licence car"
+msgstr "Matrícula"
+
+#. module: sale_additional_fields
+#: model:ir.ui.menu,name:sale_additional_fields.licence_car_menu
+#: model_terms:ir.ui.view,arch_db:sale_additional_fields.res_partner_view_team
+msgid "Licences"
+msgstr "Matrículas"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Archivo adjunto principal"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de entrega de mensajes"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Fecha límite de la próxima actividad"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__activity_summary
+msgid "Next Activity Summary"
+msgstr "Resumen de la siguiente actividad"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Siguiente tipo de actividad"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__message_has_error_counter
+msgid "Number of errors"
+msgstr "Número de errores"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,help:sale_additional_fields.field_licence_car__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,help:sale_additional_fields.field_licence_car__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,help:sale_additional_fields.field_licence_car__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_purchase_order__ip_number
+#: model:ir.model.fields,field_description:sale_additional_fields.field_sale_order__ip_number
+msgid "Nº IP"
+msgstr "Nº IP"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__partner_id
+msgid "Partner"
+msgstr "Partner"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_sale_order__supplier_id
+msgid "Proveedor"
+msgstr "Proveedor"
+
+#. module: sale_additional_fields
+#: model:ir.model,name:sale_additional_fields.model_purchase_order
+msgid "Purchase Order"
+msgstr "Pedido de compra"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__activity_user_id
+msgid "Responsible User"
+msgstr "Responsable"
+
+#. module: sale_additional_fields
+#: model:ir.model,name:sale_additional_fields.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,help:sale_additional_fields.field_licence_car__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,help:sale_additional_fields.field_licence_car__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,field_description:sale_additional_fields.field_licence_car__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: sale_additional_fields
+#: model:ir.model.fields,help:sale_additional_fields.field_licence_car__website_message_ids
+msgid "Website communication history"
+msgstr ""
