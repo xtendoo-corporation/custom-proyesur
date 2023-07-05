@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+         <template
+            id="document_format_proyesur.external_layout_boxed_brico_invoice">
+            <t t-name="external_layout_boxed_brico_invoice">
+                    <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
+                        <div class="o_boxed_header">
+                        <div class="row mb8">
+                            <div class="col-6">
+                                <img src="/document_format_proyesur/static/src/img/Proyesur_logo.png" />
+                            </div>
+                            <div class="col-6 text-right mb4">
+                                <h4 class="mt0" t-field="company.report_header"/>
+                                <div name="company_address" class="float-right mb4">
+                                    <ul class="list-unstyled" t-if="company.company_details or forced_vat">
+                                        <li t-if="company.company_details"> <t t-esc="company.company_details"/></li>
+                                        <li t-if="forced_vat">
+                                            <t t-esc="company.country_id.vat_label or 'Tax ID'"/>:
+                                            <span t-esc="forced_vat"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div t-attf-class="article o_report_layout_boxed o_company_#{company.id}_layout {{  'o_layout_background' if company.layout_background in ['Geometric', 'Custom']  else  '' }}" t-attf-style="background-image: url({{ 'data:image/png;base64,%s' % company.layout_background_image.decode('utf-8') if company.layout_background_image and company.layout_background == 'Custom' else '/base/static/img/bg_background_template.jpg' if company.layout_background == 'Geometric' else ''}});" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                        <div class="pt-5">
+                            <!-- This div ensures that the address is not cropped by the header. -->
+                            <t t-call="web.address_layout"/>
+                        </div>
+                        <t t-out="0"/>
+                    </div>
+
+                    <div t-attf-class="footer o_boxed_footer o_company_#{company.id}_layout">
+                        <div class="text-center">
+                            <div t-field="company.report_footer"/>
+                            <div t-if="report_type == 'pdf'">
+                                Page: <span class="page"/> / <span class="topage"/>
+                            </div>
+                            <div t-if="report_type == 'pdf' and display_name_in_footer" class="text-muted">
+                                <span t-field="o.name"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+         </template>
+    </data>
+</odoo>
