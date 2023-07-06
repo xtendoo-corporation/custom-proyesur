@@ -28,7 +28,8 @@
                 <t t-set="company" t-value="o.company_id"/>
                 <t t-set="partner_id" t-value="o.partner_id"/>
                 <t t-call="document_format_proyesur.external_layout_boxed_brico_invoice">
-                    <t t-set="o" t-value="o.with_context(lang=lang)"/>
+                    <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
+<!--                    <t t-set="o" t-value="o.with_context(lang=lang)"/>-->
                     <t t-set="forced_vat"
                        t-value="o.fiscal_position_id.foreign_vat"/> <!-- So that it appears in the footer of the report instead of the company VAT if it's set -->
                     <t t-set="address">
@@ -221,13 +222,6 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-7">
-                            <p>CONDICIONES DE ENTREGA DE MERCANCIA A DOMICILIO:
-                                <b>PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES S.R.L</b>
-                                No se hace responsable de la falta de mercancía una vez
-                                revisada y entregada al cliente con la firma de este documento.
-                            </p>
                         </div>
                         <p t-if="o.move_type in ('out_invoice', 'in_refund') and o.payment_reference"
                            name="payment_communication">

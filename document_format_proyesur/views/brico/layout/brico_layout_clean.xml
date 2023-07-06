@@ -14,7 +14,9 @@
                                 <div name="company_address" class="float-right mb4">
                                     <ul class="list-unstyled">
                                         <li>
-                                            <t t-esc="company.company_details"/>
+                                            <t t-set="company_details" t-value="company.company_details"></t>
+                                            <t t-set="company_details" t-value="company_details.replace('PROYECTOS DEL SUR Y MANTENIMIENTOS INTEGRALES,S.L','Proyesur - Bricodepot',1)"></t>
+                                            <t t-esc="company_details"/>
                                         </li>
                                     </ul>
                                 </div>

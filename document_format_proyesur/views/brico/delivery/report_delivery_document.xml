@@ -35,7 +35,7 @@
                             <div name="div_outgoing_address">
                                 <div t-if="o.should_print_delivery_address()">
                                     <span>
-                                        <strong>Delivery Address:</strong>
+                                        <strong>Dirección de entrega:</strong>
                                     </span>
                                     <div t-field="o.move_lines[0].partner_id"
                                          t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
@@ -43,7 +43,7 @@
                                 <div
                                     t-elif="o.picking_type_id.code != 'internal' and o.picking_type_id.warehouse_id.partner_id">
                                     <span>
-                                        <strong>Warehouse Address:</strong>
+                                        <strong>Dirección del almacén:</strong>
                                     </span>
                                     <div t-field="o.picking_type_id.warehouse_id.partner_id"
                                          t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
@@ -55,17 +55,17 @@
                                 <div class="col-7" name="div_incoming_address">
                                     <div t-if="o.picking_type_id.code=='incoming' and partner">
                                         <span>
-                                            <strong>Vendor Address:</strong>
+                                            <strong>Dirección del proveedor:</strong>
                                         </span>
                                     </div>
                                     <div t-if="o.picking_type_id.code=='internal' and partner">
                                         <span>
-                                            <strong>Warehouse Address:</strong>
+                                            <strong>Dirección del almacén:</strong>
                                         </span>
                                     </div>
                                     <div t-if="o.picking_type_id.code=='outgoing' and partner">
                                         <span>
-                                            <strong>Customer Address:</strong>
+                                            <strong>Dirección del cliente:</strong>
                                         </span>
                                     </div>
                                     <div t-if="partner" name="partner_header">
@@ -85,11 +85,11 @@
                             </h2>
                             <div class="row mt32 mb32">
                                 <div t-if="o.origin" class="col-auto" name="div_origin">
-                                    <strong>Order:</strong>
+                                    <strong>Pedido:</strong>
                                     <p t-field="o.origin"/>
                                 </div>
                                 <div t-if="o.state" class="col-auto" name="div_sched_date">
-                                    <strong>Shipping Date:</strong>
+                                    <strong>Fecha de entrega:</strong>
                                     <t t-if="o.state == 'done'">
                                         <p t-field="o.date_done"/>
                                     </t>
@@ -102,13 +102,13 @@
                                 <thead>
                                     <tr>
                                         <th name="th_sm_product">
-                                            <strong>Product</strong>
+                                            <strong>Producto</strong>
                                         </th>
                                         <th name="th_sm_ordered">
-                                            <strong>Ordered</strong>
+                                            <strong>Pedido</strong>
                                         </th>
                                         <th name="th_sm_quantity">
-                                            <strong>Delivered</strong>
+                                            <strong>Entregado</strong>
                                         </th>
                                     </tr>
                                 </thead>
@@ -140,18 +140,18 @@
                                 <thead>
                                     <tr>
                                         <th name="th_sml_product">
-                                            <strong>Product</strong>
+                                            <strong>Producto</strong>
                                         </th>
                                         <t name="lot_serial" t-if="has_serial_number">
                                             <th>
-                                                Lot/Serial Number
+                                                Lote
                                             </th>
                                         </t>
                                         <th name="th_sml_qty_ordered" class="text-center" t-if="not has_serial_number">
-                                            <strong>Ordered</strong>
+                                            <strong>Pedido</strong>
                                         </th>
                                         <th name="th_sml_quantity" class="text-center">
-                                            <strong>Delivered</strong>
+                                            <strong>Entregado</strong>
                                         </th>
                                     </tr>
                                 </thead>
@@ -219,17 +219,17 @@
                                t-value="o.backorder_ids.filtered(lambda x: x.state not in ('done', 'cancel'))"/>
                             <t t-if="o.backorder_ids and backorders">
                                 <p class="mt-5">
-                                    <span>Remaining quantities not yet delivered:</span>
+                                    <span>Cantidades restantes aún no entregadas:</span>
                                 </p>
                                 <table class="table table-sm" name="stock_backorder_table" style="table-layout: fixed;">
                                     <thead>
                                         <tr>
                                             <th name="th_sb_product">
-                                                <strong>Product</strong>
+                                                <strong>Producto</strong>
                                             </th>
                                             <th/>
                                             <th name="th_sb_quantity" class="text-center">
-                                                <strong>Quantity</strong>
+                                                <strong>Cantidad</strong>
                                             </th>
                                         </tr>
                                     </thead>
