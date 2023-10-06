@@ -2,14 +2,24 @@
 <odoo>
     <data>
 
-        <report
-            id="report_delivery_brico"
-            string="Albarán BricoDepot"
-            model="stock.picking"
-            report_type="qweb-pdf"
-            name="document_format_proyesur.delivery_report_brico"
-            print_report_name="'Albarán de entrega  - %s' % (object.name)"
-        />
+<!--        <report-->
+<!--            id="report_delivery_brico"-->
+<!--            string="Albarán BricoDepot"-->
+<!--            model="stock.picking"-->
+<!--            report_type="qweb-pdf"-->
+<!--            name="document_format_proyesur.delivery_report_brico"-->
+<!--            print_report_name="'Albarán de entrega  - %s' % (object.name)"-->
+<!--        />-->
+
+        <record id="report_delivery_brico" model="ir.actions.report">
+            <field name="name">Albarán BricoDepot</field>
+            <field name="model">stock.picking</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">document_format_proyesur.delivery_report_brico</field>
+            <field name="report_file">document_format_proyesur.delivery_report_brico</field>
+            <field name="paperformat_id" ref="document_format_proyesur.paperformat_proyesur_report" />
+        </record>
+
         <template id="delivery_report_brico">
             <t t-name="document_format_proyesur.delivery_report_brico">
                 <t t-call="web.html_container">

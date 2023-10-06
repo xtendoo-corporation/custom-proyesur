@@ -3,9 +3,9 @@
     "summary": """Formatos de documentos de Proyesur""",
     "version": "15.0.1.0.0",
     "description": """Formatos de documentos de Proyesur""",
-    "author": "Jaime Millan",
+    "author": "Jaime Millán",
     "company": "Xtendoo",
-    "website": "http://xtendoo.es",
+    "website": "https://xtendoo.es",
     "category": "Extra Tools",
     "license": "AGPL-3",
     "depends": [
@@ -13,6 +13,7 @@
         "web"
     ],
     "data": [
+        "views/paper_format.xml",
         "views/invoice/report_invoice_document.xml",
         #Brico
         "views/brico/layout/brico_layout_clean.xml",
