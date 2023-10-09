@@ -240,9 +240,9 @@
                         <!--                                    <span t-field="o.payment_reference"/>-->
                         <!--                                </b>-->
                         <!--                            </p>-->
-                        <p t-if="o.invoice_payment_term_id" name="payment_term">
-                            <span t-field="o.invoice_payment_term_id.note"/>
-                        </p>
+<!--                        <p t-if="o.invoice_payment_term_id" name="payment_term">-->
+<!--                            <span t-field="o.invoice_payment_term_id.note"/>-->
+<!--                        </p>-->
                         <div t-if="not is_html_empty(o.narration)" name="comment">
                             <span t-field="o.narration"/>
                         </div>
@@ -265,7 +265,6 @@
                         <!--                            </div>-->
                     </t>
                 </div>
-
             </t>
         </template>
 
@@ -276,40 +275,55 @@
                     <t t-set="company" t-value="o.company_id"/>
                     <t t-set="partner_id" t-value="o.partner_id"/>
                     <t t-call="document_format_proyesur.external_layout_boxed_brico_invoice">
-                        <h5>CONDICIONES GENERALES PARA OBRAS, INSTALACIONES Y TRANSPORTES</h5>
-                        <p>-Trabajos realizados por
-                            PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES S.R.L - B90192022 empresa colaboradora de Brico
-                            Depôt.-El cliente acepta la responsabilidad de PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES
+                        <p style="font-size: 0.5em; text-align: center; margin-top: -52px;">
+                            <u>
+                                <b>CONDICIONES GENERALES PARA OBRAS, INSTALACIONES Y TRANSPORTES</b>
+                            </u>
+                        </p>
+                        <p style="font-size: 0.5em;">
+                            -Trabajos realizados por PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES S.R.L - B90192022
+                            empresa colaboradora de Brico
+                            Depôt.
+                            -El cliente acepta la responsabilidad de PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES
                             S.R.L - B90192022 de sus montajes,instalaciones y transportes, eximiendo de toda
-                            responsabilidad de dichos trabajos a Brico Depôt.-El comprador está obligado a comprobar el
+                            responsabilidad de dichos trabajos a Brico Depôt.
+                            -El comprador está obligado a comprobar el
                             estado del producto en el momento de la entrega. La empresa no se responsabilizará una
-                            vezentregado y comprobado el material.-Antes de colocar cualquier material, el cliente
+                            vezentregado y comprobado el material.
+                            -Antes de colocar cualquier material, el cliente
                             revisará que esté todo en buen estado, ya que el fabricante no se responsabilizará una
-                            vezinstalado.-Todo servicio de reforma o instalación requerirá de la realización de una
-                            medición y presupuestos previos. Para ello, el instalador realizaráuna visita al Cliente en
+                            vezinstalado.
+                            -Todo servicio de reforma o instalación requerirá de la realización de una
+                            medición y presupuestos previos. Para ello, el instalfador realizaráuna visita al Cliente en
                             la dirección facilitada por éste siempre y cuando se realice el pago de la misma.El coste de
                             la medición y el presupuesto será abonado por el cliente en los términos indicados por el
                             personal de PROYECTOS DEL SURMANTENIMIENTOS INTEGRALES S.R.L - B901920225 en el momento de
-                            la aceptación del servicio.-El presupuesto deberá ser recogido por el Cliente en el stand de
+                            la aceptación del servicio.
+                            -El presupuesto deberá ser recogido por el Cliente en el stand de
                             PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES S.R.L - B90192022que tiene en Brico Depôt, no se
-                            enviará ni por correo ordinario ni por e-mail.-PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES
+                            enviará ni por correo ordinario ni por e-mail.
+                            -PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES
                             S.R.L - B90192022 facilitará una copia por escrito del presupuesto de reforma oinstalación a
                             los Clientes que así lo soliciten previo pago del importe pactado. El presupuesto de Reforma
                             o instalación tendrá una validez de30 días a contar desde el momento en que el cliente ha
                             sido informado de que lo tiene a su disposición en el Stand. Transcurrido dicho plazosin que
                             el Cliente lo haya recogido y/o aceptado expresamente, el presupuesto caducará.-La falta de
                             aceptación del presupuesto no dará lugar al reintegro de su importe.-La instalación se
-                            realizará en la fecha previamente acordada con el cliente.-El importe de la reforma será
+                            realizará en la fecha previamente acordada con el cliente.
+                            -El importe de la reforma será
                             abonado por el Cliente en los términos acordados con PROYECTOS DEL SUR MANTENIMIENTOS
                             INTEGRALESS.R.L - B90192022 en el momento de aceptación del servicio y reflejados en el
-                            presupuesto.-El precio del transporte no está incluido en el presupuesto de reforma. Dicho
+                            presupuesto.
+                            -El precio del transporte no está incluido en el presupuesto de reforma. Dicho
                             precio se facilitará por PROYECTOS DEL SURMANTENIMIENTOS INTEGRALES S.R.L - B90192022 y
                             deberá ser abonado por el cliente en el momento de la realización del pedido en
                             lascondiciones indicadas.-Cualquier suplemento por desplazamiento del instalador fuera del
-                            radio de 15 km de la tienda será comunicado para que sea abonado.-Los importes indicados en
+                            radio de 15 km de la tienda será comunicado para que sea abonado.
+                            -Los importes indicados en
                             el presupuesto corresponden a trabajos a realizar en condiciones normales. Cualquier trabajo
                             adicional y/omaquinaria especial serán igualmente presupuestados por el instalador y no se
-                            realizará previo pago.-PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES S.R.L - B901920225 no se
+                            realizará previo pago.
+                            -PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES S.R.L - B901920225 no se
                             hará responsable de los defectos de construcción y/ovicios ocultos existentes en la vivienda
                             en el momento de la instalación. La solución de los mismos podrá llevarse a cabo por el
                             instaladorsiempre y cuando esté capacitado y previo presupuesto y autorización expresa del
@@ -317,30 +331,42 @@
                             en estos precios lo que haya que desmontar, lo que esté sujeto a pared o suelo, o sean
                             necesarios, por su peso, más dedos personas para trasladarlos. En estos casos, el movimiento
                             de muebles y la retirada de escombros quedarán contemplados dentro delpropio Presupuesto del
-                            Proyecto.-Corresponderán al Cliente las responsabilidades derivadas de la imposibilidad de
+                            Proyecto.
+                            -Corresponderán al Cliente las responsabilidades derivadas de la imposibilidad de
                             llevar a efecto la instalación por lo dispuesto en losestatutos o normas de régimen interno
                             de la Comunidad de Propietarios del domicilio donde se va a realizar la instalación o por
                             lasOrdenanzas Municipales de aplicación así como las que se deriven de su incumplimiento.
                             Así mismo, corresponde al Cliente la solicitud decuantas licencias sean necesarias para
                             llevar a cabo el servicio contratado y el pago de las tasas correspondientes a dicho
-                            servicio.-El servicio de reforma e instalación dispone de una garantía de dos años, a cargo
-                            del instalador, por ejecución defectuosa de la misma.-Cualquier modificación sobre el
+                            servicio.
+                            -El servicio de reforma e instalación dispone de una garantía de dos años, a cargo
+                            del instalador, por ejecución defectuosa de la misma.
+                            -Cualquier modificación sobre el
                             presupuesto inicial deberán ser aceptados tanto por el cliente como por PROYECTOS DEL
                             SURMANTENIMIENTOS INTEGRALES S.R.L - B90192022 a efectos de la cobertura de la garantía del
                             servicio.-A todos los presupuestos, se le incrementará el IVA vigente para que dé el
                             resultado total final. El cliente asegurará, antes del inicio de lareforma o instalación,
                             los servicios de agua, luz y, en su caso, gas suficientes para la realización de los
-                            servicios reflejados en el presupuesto.-Se advierte expresamente por PROYECTOS DEL SUR
-                            MANTENIMIENTOS INTEGRALES S.R.L - B90192022 que las cláusulas de este contratohan sido
+                            servicios reflejados en el presupuesto.
+                            -Se advierte expresamente por PROYECTOS DEL SUR
+                            MANTENIMIENTOS INTEGRALES S.R.dL - B90192022 que las cláusulas de este contratohan sido
                             redactadas previamente por el mismo y se consideran condiciones generales de contratación,
                             dejando constancia al Cliente delconocimiento y aceptación expresa de las mismas y de su
-                            incorporación al contrato, de conformidad con la ley 7/1998, de abril, sobreCondiciones
-                            Generales de Contratación.LEY DE PROTECCIÓN DE DATOSEn cumplimiento de lo dispuesto en la
+                            incorporación al contrato, de conformidad con la ley 7/1998, de abril, sobre Condiciones
+                            Generales de Contratación.
+                        </p>
+                        <p style="font-size: 0.5em; text-align: center;">
+                            <u>
+                                <b>LEY DE PROTECCIÓN DE DATOS</b>
+                            </u>
+                        </p>
+                        <p style="font-size: 0.5em;">
+                            En cumplimiento de lo dispuesto en la
                             Ley Orgánica 15/1999, del 13 de diciembre, de protección de datos de carácter personal,
-                            sureglamento de desarrollo aprobado por el R.D. 1720/2007, del 21 de Diciembre y el
+                            sureglamento de desarrollo aprobado por el R.D. 1720/2007, del 21 de Didciembre y el
                             Reglamento (UE) 2016/679 del Parlamento Europeo ydel Consejo relativo a protección de las
                             personas físicas en lo que respecta al tratamiento de datos personales y a la libre
-                            circulación deestos datos, PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES S.R.L le informa que
+                            circulación deestos datos, PROYECTOS DEL SUR MANdTENIMIENTOS INTEGRALES S.R.L le informa que
                             los datos personales obtenidos mediante lacumplimentación de esta documentación
                             impreso/formulario y demás que se adjuntan van a ser incorporados, para su tratamiento, a en
                             unfichero automatizado. El tratamiento tiene como finalidades la gestión contable, fiscal,
@@ -355,7 +381,7 @@
                             datos solicitados mediante este documento pueden ser utilizados con fines publicitarios y
                             encuestas desatisfacción.
                         </p>
-                        <p>FIRMA DEL CLIENTE:</p>
+                        <p style="font-size: 0.5em;">FIRMA DEL CLIENTE:</p>
                     </t>
                 </div>
             </t>
