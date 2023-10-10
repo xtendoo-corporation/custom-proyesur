@@ -8,7 +8,7 @@
                     <div class="o_boxed_header">
                         <div class="row mb8">
                             <div class="col-6">
-                                <img src="/document_format_proyesur/static/src/img/logo_brico_proye.png"/>
+                                <img src="/document_format_proyesur/static/src/img/logo_brico_proye.png" style="max-width: 120px;"/>
                             </div>
                             <div class="col-6 text-right mb4">
                                 <div name="company_address" class="float-right mb4">

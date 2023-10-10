@@ -44,7 +44,7 @@
                                 <span t-field="o.partner_id.vat"/>
                             </div>
                         </t>
-                        <h2>
+                        <h2 style="font-size: 14px;">
                             <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'">Factura</span>
                             <span t-if="o.move_type == 'out_invoice' and o.state == 'draft'">Factura borrador
                             </span>
@@ -275,12 +275,12 @@
                     <t t-set="company" t-value="o.company_id"/>
                     <t t-set="partner_id" t-value="o.partner_id"/>
                     <t t-call="document_format_proyesur.external_layout_boxed_brico_invoice">
-                        <p style="font-size: 0.5em; text-align: center; margin-top: -52px;">
+                        <p style="font-size: 8px; text-align: center; margin-top: -20px;">
                             <u>
                                 <b>CONDICIONES GENERALES PARA OBRAS, INSTALACIONES Y TRANSPORTES</b>
                             </u>
                         </p>
-                        <p style="font-size: 0.5em;">
+                        <p style="font-size: 8px; margin-top: -18px">
                             -Trabajos realizados por PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES S.R.L - B90192022
                             empresa colaboradora de Brico
                             Depôt.
@@ -355,12 +355,12 @@
                             incorporación al contrato, de conformidad con la ley 7/1998, de abril, sobre Condiciones
                             Generales de Contratación.
                         </p>
-                        <p style="font-size: 0.5em; text-align: center;">
+                        <p style="font-size: 8px; text-align: center; margin-top: -18px">
                             <u>
                                 <b>LEY DE PROTECCIÓN DE DATOS</b>
                             </u>
                         </p>
-                        <p style="font-size: 0.5em;">
+                        <p style="font-size: 8px; margin-top: -18px">
                             En cumplimiento de lo dispuesto en la
                             Ley Orgánica 15/1999, del 13 de diciembre, de protección de datos de carácter personal,
                             sureglamento de desarrollo aprobado por el R.D. 1720/2007, del 21 de Didciembre y el
@@ -381,7 +381,7 @@
                             datos solicitados mediante este documento pueden ser utilizados con fines publicitarios y
                             encuestas desatisfacción.
                         </p>
-                        <p style="font-size: 0.5em;">FIRMA DEL CLIENTE:</p>
+                        <p style="font-size: 8px; margin-top: -18px">FIRMA DEL CLIENTE:</p>
                     </t>
                 </div>
             </t>
