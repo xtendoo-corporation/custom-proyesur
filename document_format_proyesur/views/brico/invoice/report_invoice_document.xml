@@ -39,9 +39,9 @@
                         <t t-set="address">
                             <address t-field="o.partner_id"
                                      t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
-                            <div t-if="o.partner_id.vat" class="mt16">
+                            <div t-if="o.partner_id.vat" class="mt16" >
                                 NIF:
-                                <span t-field="o.partner_id.vat"/>
+                                <span t-field="o.partner_id.vat" />
                             </div>
                         </t>
                         <h2 style="font-size: 14px;">

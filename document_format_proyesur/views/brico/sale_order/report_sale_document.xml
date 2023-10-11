@@ -220,14 +220,14 @@
                         </p>
                         <div class="row">
                             <div class="col-7">
-                                <p>CONDICIONES DE ENTREGA DE MERCANCIA A DOMICILIO:
+                                <p style="font-size: 8px">CONDICIONES DE ENTREGA DE MERCANCIA A DOMICILIO:
                                     <b>PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES S.R.L</b>
                                     No se hace responsable de la falta de mercancía una vez
                                     revisada y entregada al cliente con la firma de este documento.
                                 </p>
                             </div>
                             <div class="col-5">
-                                <h4>FIRMA DEL CLIENTE</h4>
+                                <h4 style="font-size: 14px">FIRMA DEL CLIENTE</h4>
                             </div>
                         </div>
 
