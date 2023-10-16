@@ -100,11 +100,11 @@
 
                         <table class="table table-sm o_main_table">
                             <!-- In case we want to repeat the header, remove "display: table-row-group" -->
-                            <thead style="display: table-row-group">
+                            <thead style="display: table-row-group; font-size: 8px">
                                 <tr>
                                     <th name="th_description" class="text-left">Descripción</th>
                                     <th name="th_quantity" class="text-right">Cantidad</th>
-                                    <th name="th_priceunit" class="text-right">Percio Unitario</th>
+                                    <th name="th_priceunit" class="text-right">Precio Unitario</th>
                                     <th name="th_discount" t-if="display_discount" class="text-right"
                                         groups="product.group_discount_per_so_line">
                                         <span>Desc.%</span>

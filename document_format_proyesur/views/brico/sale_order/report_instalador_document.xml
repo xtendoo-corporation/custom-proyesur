@@ -23,7 +23,7 @@
         </template>
 
         <template
-            id="document_format_proyesur.instalador_document_template">
+            id="instalador_document_template">
             <t t-name="sale_instalador_document_template">
                 <t t-call="document_format_proyesur.external_layout_boxed_brico_sale">
                     <t t-set="company" t-value="doc.company_id"/>

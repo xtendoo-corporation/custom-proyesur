@@ -5,7 +5,7 @@
             <t t-name="external_layout_boxed_brico_invoice">
                 <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
                     <div class="o_boxed_header" style="padding: 10px; margin: 0;">
-                        <div class="row mb-2" style="border: 2px solid red">
+                        <div class="row mb-2">
                             <div class="col-6">
                                 <img src="/document_format_proyesur/static/src/img/proyesur_logo.png"
                                      style="max-width: 120px;"/>
@@ -32,7 +32,7 @@
                     t-attf-style="background-image: url({{ 'data:image/png;base64,%s' % company.layout_background_image.decode('utf-8') if company.layout_background_image and company.layout_background == 'Custom' else '/base/static/img/bg_background_template.jpg' if company.layout_background == 'Geometric' else ''}});"
                     t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
                     t-att-data-oe-lang="o and o.env.context.get('lang')">
-                    <div class="pt-3" style="padding: 10px; margin: 0; border: 2px solid red">
+                    <div class="pt-3" style="padding: 10px; margin: 0;">
                         <t t-call="web.address_layout"/>
                     </div>
                     <t t-out="0"/>

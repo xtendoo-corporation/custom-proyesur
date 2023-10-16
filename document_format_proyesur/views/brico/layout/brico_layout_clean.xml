@@ -8,10 +8,11 @@
                     <div class="o_boxed_header">
                         <div class="row mb8">
                             <div class="col-6">
-                                <img src="/document_format_proyesur/static/src/img/logo_brico_proye.png" style="max-width: 120px;"/>
+                                <img src="/document_format_proyesur/static/src/img/logo_brico_proye.png"
+                                     style="max-width: 120px;"/>
                             </div>
-                            <div class="col-6 text-right mb4">
-                                <div name="company_address" class="float-right mb4">
+                            <div class="col-6 mb4">
+                                <div name="company_address" class="float-left mb4">
                                     <ul class="list-unstyled">
                                         <li>
                                             <t t-set="company_details" t-value="company.company_details"/>
@@ -21,8 +22,10 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="company_phone_email" style="font-size: 10px; margin-left: 10px;">
-                                    <span>610878402</span><br/>
+                                <div class="company_phone_email float-right"
+                                     style="font-size: 10px; margin-left: 10px;">
+                                    <span>610878402</span>
+                                    <br/>
                                     <span>bricomontajesdelsur@gmail.com</span>
                                 </div>
                             </div>
