@@ -20,9 +20,9 @@
         "views/brico/sale_order/report_sale_document.xml",
         "views/brico/layout/brico_layout_clean_invoice.xml",
         "views/brico/invoice/report_invoice_document.xml",
-        "views/brico/delivery/report_delivery_document.xml"
-        "views/brico/sale_order/report_instalador_document.xml"
-        "views/brico/sale_order/report_driver_document.xml"
+        "views/brico/delivery/report_delivery_document.xml",
+        "views/brico/sale_order/report_instalador_document.xml",
+        "views/brico/sale_order/report_driver_document.xml",
     ],
     "installable": True,
     "auto_install": False,
