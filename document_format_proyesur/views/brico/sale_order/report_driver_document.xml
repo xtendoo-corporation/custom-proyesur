@@ -23,7 +23,7 @@
         </template>
 
         <template
-            id="driver_document_template">
+            id="document_format_proyesur.driver_document_template">
             <t t-name="sale_document_template">
                 <t t-call="web.html_container">
                     <t t-call="document_format_proyesur.external_layout_boxed_brico_sale">

@@ -33,17 +33,63 @@
                     <t t-set="company" t-value="o.company_id"/>
                     <t t-set="partner_id" t-value="o.partner_id"/>
                     <t t-call="document_format_proyesur.external_layout_boxed_brico_invoice">
+                        <style>
+                            .info-container {
+                            display: flex;
+                            justify-content: space-between;
+                            }
+
+                            .info-container .user_info {
+                            width: 48%;
+                            margin-right: 2%; /* Ajusta el margen derecho para controlar el espacio */
+                            box-sizing: border-box;
+                            float: left;
+                            }
+
+                            .info-container .partner_info {
+                            width: 48%;
+                            margin-left: 2%; /* Ajusta el margen izquierdo para controlar el espacio */
+                            box-sizing: border-box;
+                            float: left;
+                            }
+                        </style>
+                        <div class="info-container">
+                            <div class="user_info" style="font-size: 14px;">
+                                <span t-field="o.user_id.company_id.name"/>
+                                <br/>
+                                <span t-field="o.user_id.company_id.vat"/>
+                                <p>
+                                    <span t-field="o.user_id.company_id.street"/>
+                                    <br/>
+                                    <span t-field="o.user_id.company_id.city"/>
+                                    <br/>
+                                    <span t-field="o.user_id.company_id.zip"/>
+                                    <br/>
+                                    <span t-field="o.user_id.company_id.country_id.name"/>
+                                </p>
+                            </div>
+
+                            <div class="partner_info" style="font-size: 14px;">
+                                <span t-field="o.partner_id.name"/>
+                                <br/>
+                                <span t-field="o.partner_id.vat"/>
+                                <p>
+                                    <span t-field="o.partner_id.street"/>
+                                    <br/>
+                                    <span t-field="o.partner_id.city"/>
+                                    <br/>
+                                    <span t-field="o.partner_id.zip"/>
+                                    <br/>
+                                    <span t-field="o.partner_id.country_id.name"/>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div style="clear: both;"/> <!-- Limpiar flotantes para que no afecte a otros elementos -->
+
                         <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
                         <t t-set="forced_vat"
-                           t-value="o.fiscal_position_id.foreign_vat"/> <!-- So that it appears in the footer of the report instead of the company VAT if it's set -->
-                        <t t-set="address">
-                            <address t-field="o.partner_id"
-                                     t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
-                            <div t-if="o.partner_id.vat" class="mt16" >
-                                NIF:
-                                <span t-field="o.partner_id.vat" />
-                            </div>
-                        </t>
+                           t-value="o.fiscal_position_id.foreign_vat"/>
                         <h2 style="font-size: 14px;">
                             <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'">Factura</span>
                             <span t-if="o.move_type == 'out_invoice' and o.state == 'draft'">Factura borrador
@@ -57,7 +103,7 @@
                             <span t-if="o.name != '/'" t-field="o.name"/>
                         </h2>
 
-                        <div id="informations" class="row mt-4 mb-4">
+                        <div id="informations" class="row mt-4 mb-4" style="font-size: 12 px">
                             <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date" name="invoice_date">
                                 <t t-if="o.move_type == 'out_invoice'">
                                     <strong>Fecha de factura:</strong>
@@ -75,17 +121,18 @@
                             </div>
                             <div class="col-auto col-3 mw-100 mb-2"
                                  t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'"
-                                 name="due_date">
+                                 name="due_date" style="font-size: 12 px">
                                 <strong>Fecha de vencimiento:</strong>
                                 <p class="m-0" t-field="o.invoice_date_due"/>
                             </div>
                             <div class="col-auto col-3 mw-100 mb-2" t-if="o.partner_id.ref"
-                                 name="customer_code">
+                                 name="customer_code" style="font-size: 12 px">
                                 <strong>Código de cliente:</strong>
                                 <p class="m-0" t-field="o.partner_id.ref"/>
                             </div>
-                            <div class="col-auto col-3 mw-100 mb-2" t-if="o.ref" name="reference">
-                                <strong>Referendia:</strong>
+                            <div class="col-auto col-3 mw-100 mb-2" t-if="o.ref" name="reference"
+                                 style="font-size: 12 px">
+                                <strong>Referencia:</strong>
                                 <p class="m-0" t-field="o.ref"/>
                             </div>
                         </div>
@@ -93,7 +140,7 @@
                         <t t-set="display_discount" t-value="any(l.discount for l in o.invoice_line_ids)"/>
 
                         <table class="table table-sm o_main_table" name="invoice_line_table">
-                            <thead>
+                            <thead style="font-size: 12 px">
                                 <tr>
                                     <th name="th_description" class="text-left">
                                         <span>Descripción</span>
@@ -121,7 +168,7 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody class="invoice_tbody">
+                            <tbody class="invoice_tbody" style="font-size: 12 px">
                                 <t t-set="current_subtotal" t-value="0"/>
                                 <t t-set="lines"
                                    t-value="o.invoice_line_ids.sorted(key=lambda l: (-l.sequence, l.date, l.move_name, -l.id), reverse=True)"/>
@@ -240,9 +287,16 @@
                         <!--                                    <span t-field="o.payment_reference"/>-->
                         <!--                                </b>-->
                         <!--                            </p>-->
-<!--                        <p t-if="o.invoice_payment_term_id" name="payment_term">-->
-<!--                            <span t-field="o.invoice_payment_term_id.note"/>-->
-<!--                        </p>-->
+                        <br/>
+                        <strong>Datos bancarios:</strong>
+                        <p t-if="o.partner_bank_id">
+                            <span t-field="o.user_id.company_id.bank_ids.bank_id"/>
+                            <span t-field="o.user_id.company_id.bank_ids.acc_number"/>
+                            <br/>
+                        </p>
+                        <p t-if="o.invoice_payment_term_id" name="payment_term">
+                            <span t-field="o.invoice_payment_term_id.note"/>
+                        </p>
                         <div t-if="not is_html_empty(o.narration)" name="comment">
                             <span t-field="o.narration"/>
                         </div>
@@ -275,113 +329,177 @@
                     <t t-set="company" t-value="o.company_id"/>
                     <t t-set="partner_id" t-value="o.partner_id"/>
                     <t t-call="document_format_proyesur.external_layout_boxed_brico_invoice">
-                        <p style="font-size: 8px; text-align: center; margin-top: -20px;">
-                            <u>
-                                <b>CONDICIONES GENERALES PARA OBRAS, INSTALACIONES Y TRANSPORTES</b>
-                            </u>
-                        </p>
-                        <p style="font-size: 8px; margin-top: -18px">
-                            -Trabajos realizados por PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES S.R.L - B90192022
-                            empresa colaboradora de Brico
-                            Depôt.
-                            -El cliente acepta la responsabilidad de PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES
-                            S.R.L - B90192022 de sus montajes,instalaciones y transportes, eximiendo de toda
-                            responsabilidad de dichos trabajos a Brico Depôt.
-                            -El comprador está obligado a comprobar el
-                            estado del producto en el momento de la entrega. La empresa no se responsabilizará una
-                            vezentregado y comprobado el material.
-                            -Antes de colocar cualquier material, el cliente
-                            revisará que esté todo en buen estado, ya que el fabricante no se responsabilizará una
-                            vezinstalado.
-                            -Todo servicio de reforma o instalación requerirá de la realización de una
-                            medición y presupuestos previos. Para ello, el instalfador realizaráuna visita al Cliente en
-                            la dirección facilitada por éste siempre y cuando se realice el pago de la misma.El coste de
-                            la medición y el presupuesto será abonado por el cliente en los términos indicados por el
-                            personal de PROYECTOS DEL SURMANTENIMIENTOS INTEGRALES S.R.L - B901920225 en el momento de
-                            la aceptación del servicio.
-                            -El presupuesto deberá ser recogido por el Cliente en el stand de
-                            PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES S.R.L - B90192022que tiene en Brico Depôt, no se
-                            enviará ni por correo ordinario ni por e-mail.
-                            -PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES
-                            S.R.L - B90192022 facilitará una copia por escrito del presupuesto de reforma oinstalación a
-                            los Clientes que así lo soliciten previo pago del importe pactado. El presupuesto de Reforma
-                            o instalación tendrá una validez de30 días a contar desde el momento en que el cliente ha
-                            sido informado de que lo tiene a su disposición en el Stand. Transcurrido dicho plazosin que
-                            el Cliente lo haya recogido y/o aceptado expresamente, el presupuesto caducará.-La falta de
-                            aceptación del presupuesto no dará lugar al reintegro de su importe.-La instalación se
-                            realizará en la fecha previamente acordada con el cliente.
-                            -El importe de la reforma será
-                            abonado por el Cliente en los términos acordados con PROYECTOS DEL SUR MANTENIMIENTOS
-                            INTEGRALESS.R.L - B90192022 en el momento de aceptación del servicio y reflejados en el
-                            presupuesto.
-                            -El precio del transporte no está incluido en el presupuesto de reforma. Dicho
-                            precio se facilitará por PROYECTOS DEL SURMANTENIMIENTOS INTEGRALES S.R.L - B90192022 y
-                            deberá ser abonado por el cliente en el momento de la realización del pedido en
-                            lascondiciones indicadas.-Cualquier suplemento por desplazamiento del instalador fuera del
-                            radio de 15 km de la tienda será comunicado para que sea abonado.
-                            -Los importes indicados en
-                            el presupuesto corresponden a trabajos a realizar en condiciones normales. Cualquier trabajo
-                            adicional y/omaquinaria especial serán igualmente presupuestados por el instalador y no se
-                            realizará previo pago.
-                            -PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES S.R.L - B901920225 no se
-                            hará responsable de los defectos de construcción y/ovicios ocultos existentes en la vivienda
-                            en el momento de la instalación. La solución de los mismos podrá llevarse a cabo por el
-                            instaladorsiempre y cuando esté capacitado y previo presupuesto y autorización expresa del
-                            Cliente y de PROYECTOS DEL SUR MANTENIMIENTOSINTEGRALES S.R.L - B90192022.-No se contemplan
-                            en estos precios lo que haya que desmontar, lo que esté sujeto a pared o suelo, o sean
-                            necesarios, por su peso, más dedos personas para trasladarlos. En estos casos, el movimiento
-                            de muebles y la retirada de escombros quedarán contemplados dentro delpropio Presupuesto del
-                            Proyecto.
-                            -Corresponderán al Cliente las responsabilidades derivadas de la imposibilidad de
-                            llevar a efecto la instalación por lo dispuesto en losestatutos o normas de régimen interno
-                            de la Comunidad de Propietarios del domicilio donde se va a realizar la instalación o por
-                            lasOrdenanzas Municipales de aplicación así como las que se deriven de su incumplimiento.
-                            Así mismo, corresponde al Cliente la solicitud decuantas licencias sean necesarias para
-                            llevar a cabo el servicio contratado y el pago de las tasas correspondientes a dicho
-                            servicio.
-                            -El servicio de reforma e instalación dispone de una garantía de dos años, a cargo
-                            del instalador, por ejecución defectuosa de la misma.
-                            -Cualquier modificación sobre el
-                            presupuesto inicial deberán ser aceptados tanto por el cliente como por PROYECTOS DEL
-                            SURMANTENIMIENTOS INTEGRALES S.R.L - B90192022 a efectos de la cobertura de la garantía del
-                            servicio.-A todos los presupuestos, se le incrementará el IVA vigente para que dé el
-                            resultado total final. El cliente asegurará, antes del inicio de lareforma o instalación,
-                            los servicios de agua, luz y, en su caso, gas suficientes para la realización de los
-                            servicios reflejados en el presupuesto.
-                            -Se advierte expresamente por PROYECTOS DEL SUR
-                            MANTENIMIENTOS INTEGRALES S.R.dL - B90192022 que las cláusulas de este contratohan sido
-                            redactadas previamente por el mismo y se consideran condiciones generales de contratación,
-                            dejando constancia al Cliente delconocimiento y aceptación expresa de las mismas y de su
-                            incorporación al contrato, de conformidad con la ley 7/1998, de abril, sobre Condiciones
-                            Generales de Contratación.
-                        </p>
-                        <p style="font-size: 8px; text-align: center; margin-top: -18px">
-                            <u>
-                                <b>LEY DE PROTECCIÓN DE DATOS</b>
-                            </u>
-                        </p>
-                        <p style="font-size: 8px; margin-top: -18px">
-                            En cumplimiento de lo dispuesto en la
-                            Ley Orgánica 15/1999, del 13 de diciembre, de protección de datos de carácter personal,
-                            sureglamento de desarrollo aprobado por el R.D. 1720/2007, del 21 de Didciembre y el
-                            Reglamento (UE) 2016/679 del Parlamento Europeo ydel Consejo relativo a protección de las
-                            personas físicas en lo que respecta al tratamiento de datos personales y a la libre
-                            circulación deestos datos, PROYECTOS DEL SUR MANdTENIMIENTOS INTEGRALES S.R.L le informa que
-                            los datos personales obtenidos mediante lacumplimentación de esta documentación
-                            impreso/formulario y demás que se adjuntan van a ser incorporados, para su tratamiento, a en
-                            unfichero automatizado. El tratamiento tiene como finalidades la gestión contable, fiscal,
-                            administrativa, la facturación de servicios o larealización de propuestas y presupuestos por
-                            parte de PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES S.R.L.Dicha información puede ser
-                            cedida a empresas colaboradoras y a entidades públicas para cumplir con las obligaciones
-                            legales y realizar elservicio que nos soliciten. La empresa PROYECTOS DEL SUR MANTENIMIENTOS
-                            INTEGRALES S.R. conservará los datos conforme a lanormativa fiscal. El interesado podrá
-                            presentar las reclamaciones pertinentes ante la Agencia Española de Protección de Datos o
-                            dirigiéndose a:PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES S.R.L - B90192022Parque
-                            Empresarial Ciudad de la Imagen C/ Ganimedes Nº5 41015 Sevilla.Acepto y consiento que los
-                            datos solicitados mediante este documento pueden ser utilizados con fines publicitarios y
-                            encuestas desatisfacción.
-                        </p>
-                        <p style="font-size: 8px; margin-top: -18px">FIRMA DEL CLIENTE:</p>
+                        <div id="conditions" name="conditions"
+                             style="page-break-before:always;border:none!important;margin-top: -30px">
+                            <br/>
+                            <h5 style="text-align:center;text-decoration:underline;font-size:7px;">CONDICIONES GENERALES
+                                PARA OBRAS,
+                                INSTALACIONES Y TRANSPORTES
+                            </h5>
+                            <p style="margin:0px;font-size:7px;">
+                                <b>-Trabajos realizados por PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES S.R.L -
+                                    B90192022 empresa colaboradora de Brico Depôt.
+                                </b>
+                            </p>
+                            <p style="margin:0px;font-size:7px;">
+                                -El cliente acepta la responsabilidad de <b>PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES
+                                S.R.L - B90192022
+                            </b> de sus montajes,
+                                instalaciones y transportes, eximiendo de toda responsabilidad de dichos trabajos a
+                                Brico Depôt.
+                            </p>
+                            <p style="margin:0px;font-size:7px;">
+                                -El comprador está obligado a comprobar el estado del producto en el momento de la
+                                entrega. La empresa no se responsabilizará una vez
+                                entregado y comprobado el material.
+                            </p>
+                            <p style="margin:0px;font-size:7px;">
+                                -Antes de colocar cualquier material, el cliente revisará que esté todo en buen estado,
+                                ya que el fabricante no se responsabilizará una vez
+                                instalado.
+                            </p>
+                            <p style="margin:0px;font-size:7px;">
+                                -Todo servicio de reforma o instalación requerirá de la realización de una medición y
+                                presupuestos previos. Para ello, el instalador realizará
+                                una visita al Cliente en la dirección facilitada por éste siempre y cuando se realice el
+                                pago de la misma.
+                                El coste de la medición y el presupuesto será abonado por el cliente en los términos
+                                indicados por el personal de <b>PROYECTOS DEL SUR
+                                MANTENIMIENTOS INTEGRALES S.R.L - B901920225
+                            </b> en el momento de la aceptación del servicio.
+                            </p>
+                            <p style="margin:0px;font-size:7px;">
+                                -El presupuesto deberá ser recogido por el Cliente en el stand de
+                                <b>PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES S.R.L - B90192022</b>
+                                que tiene en Brico Depôt, no se enviará ni por correo ordinario ni por e-mail.
+                            </p>
+                            <p style="margin:0px;font-size:7px;">
+                                -<b>PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES S.R.L - B90192022</b> facilitará una
+                                copia por escrito del presupuesto de reforma o
+                                instalación a los Clientes que así lo soliciten previo pago del importe pactado. El
+                                presupuesto de Reforma o instalación tendrá una validez de
+                                30 días a contar desde el momento en que el cliente ha sido informado de que lo tiene a
+                                su disposición en el Stand. Transcurrido dicho plazo
+                                sin que el Cliente lo haya recogido y/o aceptado expresamente, el presupuesto caducará.
+                            </p>
+                            <p style="margin:0px;font-size:7px;">
+                                -La falta de aceptación del presupuesto no dará lugar al reintegro de su importe.
+                            </p>
+                            <p style="margin:0px;font-size:7px;">
+                                -La instalación se realizará en la fecha previamente acordada con el cliente.
+                            </p>
+                            <p style="margin:0px;font-size:7px;">
+                                -El importe de la reforma será abonado por el Cliente en los términos acordados con <b>
+                                PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES
+                                S.R.L - B90192022
+                            </b> en el momento de aceptación del servicio y reflejados en el presupuesto.
+                            </p>
+                            <p style="margin:0px;font-size:7px;">
+                                -El precio del transporte no está incluido en el presupuesto de reforma. Dicho precio se
+                                facilitará por <b>PROYECTOS DEL SUR
+                                MANTENIMIENTOS INTEGRALES S.R.L - B90192022
+                            </b> y deberá ser abonado por el cliente en el momento de la realización del pedido en las
+                                condiciones indicadas.
+                            </p>
+                            <p style="margin:0px;font-size:7px;">
+                                -Cualquier suplemento por desplazamiento del instalador fuera del radio de 10 km de la
+                                tienda será comunicado para que sea abonado.
+                            </p>
+                            <p style="margin:0px;font-size:7px;">
+                                -Los importes indicados en el presupuesto corresponden a trabajos a realizar en
+                                condiciones normales. Cualquier trabajo adicional y/o
+                                maquinaria especial serán igualmente presupuestados por el instalador y no se realizará
+                                previo pago.
+                            </p>
+                            <p style="margin:0px;font-size:7px;">
+                                -<b>PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES S.R.L - B901920225</b> no se hará
+                                responsable de los defectos de construcción y/o
+                                vicios ocultos existentes en la vivienda en el momento de la instalación. La solución de
+                                los mismos podrá llevarse a cabo por el instalador
+                                siempre y cuando esté capacitado y previo presupuesto y autorización expresa del Cliente
+                                y de
+                                <b>PROYECTOS DEL SUR MANTENIMIENTOS
+                                    INTEGRALES S.R.L - B90192022.
+                                </b>
+                            </p>
+                            <p style="margin:0px;font-size:7px;">
+                                -No se contemplan en estos precios lo que haya que desmontar, lo que esté sujeto a pared
+                                o suelo, o sean necesarios, por su peso, más de
+                                dos personas para trasladarlos. En estos casos, el movimiento de muebles y la retirada
+                                de escombros quedarán contemplados dentro del
+                                propio Presupuesto del Proyecto.
+                            </p>
+                            <p style="margin:0px;font-size:7px;">
+                                -Corresponderán al Cliente las responsabilidades derivadas de la imposibilidad de llevar
+                                a efecto la instalación por lo dispuesto en los
+                                estatutos o normas de régimen interno de la Comunidad de Propietarios del domicilio
+                                donde se va a realizar la instalación o por las
+                                Ordenanzas Municipales de aplicación así como las que se deriven de su incumplimiento.
+                                Así mismo, corresponde al Cliente la solicitud de
+                                cuantas licencias sean necesarias para llevar a cabo el servicio contratado y el pago de
+                                las tasas correspondientes a dicho servicio.
+                                -El servicio de reforma e instalación dispone de una garantía de 2 años exepto en
+                                instalaciones de Aires Acondicionados que sera de 1 año, a
+                                cargo del instalador, por ejecución defectuosa de la misma.
+                            </p>
+                            <p style="margin:0px;font-size:7px;">
+                                -Cualquier modificación sobre el presupuesto inicial deberán ser aceptados tanto por el
+                                cliente como por <b>PROYECTOS DEL SUR
+                                MANTENIMIENTOS INTEGRALES S.R.L - B90192022
+                            </b> a efectos de la cobertura de la garantía del servicio.
+                            </p>
+                            <p style="margin:0px;font-size:7px;">
+                                -A todos los presupuestos, se le incrementará el IVA vigente para que dé el resultado
+                                total final. El cliente asegurará, antes del inicio de la
+                                reforma o instalación, los servicios de agua, luz y, en su caso, gas suficientes para la
+                                realización de los servicios reflejados en el presupuesto.
+                            </p>
+                            <p style="margin:0px;font-size:7px;">
+                                -Se advierte expresamente por <b>PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES S.R.L -
+                                B90192022
+                            </b> que las cláusulas de este contrato
+                                han sido redactadas previamente por el mismo y se consideran condiciones generales de
+                                contratación, dejando constancia al Cliente del
+                                conocimiento y aceptación expresa de las mismas y de su incorporación al contrato, de
+                                conformidad con la ley 7/1998, de abril, sobre
+                                Condiciones Generales de Contratación
+                            </p>
+                            <h5 style="text-align:center;text-decoration:underline;font-size:7px;">LEY DE PROTECCIÓN DE
+                                DATOS
+                            </h5>
+                            <p style="margin:0px;font-size:7px;">
+                                En cumplimiento de lo dispuesto en la Ley Orgánica 15/1999, del 13 de diciembre, de
+                                protección de datos de carácter personal, su
+                                reglamento de desarrollo aprobado por el R.D. 1720/2007, del 21 de Diciembre y el
+                                Reglamento (UE) 2016/679 del Parlamento Europeo y
+                                del Consejo relativo a protección de las personas físicas en lo que respecta al
+                                tratamiento de datos personales y a la libre circulación de
+                                estos datos, <b>PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES S.R.L</b> le informa que los
+                                datos personales obtenidos mediante la
+                                cumplimentación de esta documentación impreso/formulario y demás que se adjuntan van a
+                                ser incorporados, para su tratamiento, a en un
+                                fichero automatizado. El tratamiento tiene como finalidades la gestión contable, fiscal,
+                                administrativa, la facturación de servicios o la
+                                realización de propuestas y presupuestos por parte de
+                                <b>PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES S.R.L.</b>
+                                Dicha información puede ser cedida a empresas colaboradoras y a entidades públicas para
+                                cumplir con las obligaciones legales y realizar el
+                                servicio que nos soliciten. La empresa <b>PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES
+                                S.R.
+                            </b> conservará los datos conforme a la
+                                normativa fiscal.
+                            </p>
+                            <p style="margin:0px;font-size:7px;">
+                                El interesado podrá presentar las reclamaciones pertinentes ante la Agencia Española de
+                                Protección de Datos o dirigiéndose a:
+                                <b>PROYECTOS DEL SUR MANTENIMIENTOS INTEGRALES S.R.L - B90192022</b>
+                                Parque Empresarial Ciudad de la Imagen C/ Ganimedes Nº5 41015 Sevilla.
+                                Acepto y consiento que los datos solicitados mediante este documento pueden ser
+                                utilizados con fines publicitarios y encuestas de
+                                satisfacción
+                            </p>
+                            <h5 style="font-size:7px;">FIRMA DEL CLIENTE:</h5>
+                        </div>
                     </t>
                 </div>
             </t>

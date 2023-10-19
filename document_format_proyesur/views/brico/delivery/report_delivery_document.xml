@@ -33,7 +33,7 @@
                            t-value="o.partner_id or (o.move_lines and o.move_lines[0].partner_id) or False"/>
 
                         <t t-set="address">
-                            <div name="div_outgoing_address">
+                            <div name="div_outgoing_address" style="font-size: 12px">
                                 <div t-if="o.should_print_delivery_address()">
                                     <span>
                                         <strong>Dirección de entrega:</strong>
@@ -53,7 +53,7 @@
                         </t>
                         <t t-set="information_block">
                             <div class="row">
-                                <div class="col-7" name="div_incoming_address">
+                                <div class="col-7" name="div_incoming_address" style="font-size: 12px">
                                     <div t-if="o.picking_type_id.code=='incoming' and partner">
                                         <span>
                                             <strong>Dirección del proveedor:</strong>
@@ -61,7 +61,7 @@
                                     </div>
                                     <div t-if="o.picking_type_id.code=='internal' and partner">
                                         <span>
-                                            <strong>Dirección del almacén:</strong>
+                                            <strong>Dirección de entrega:</strong>
                                         </span>
                                     </div>
                                     <div t-if="o.picking_type_id.code=='outgoing' and partner">
@@ -72,24 +72,27 @@
                                     <div t-if="partner" name="partner_header">
                                         <div t-field="partner.commercial_partner_id"
                                              t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
-                                        <p t-if="partner.sudo().commercial_partner_id.vat"><t
-                                            t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>:
-                                            <span t-field="partner.sudo().commercial_partner_id.vat"/>
-                                        </p>
+<!--                                        <p t-if="partner.sudo().commercial_partner_id.vat"><t-->
+<!--                                            t-esc="o.company_id.country_id.vat_label or 'Tax ID'"/>:-->
+<!--                                            <span t-field="partner.sudo().commercial_partner_id.vat"/>-->
+<!--                                        </p>-->
                                     </div>
                                 </div>
                             </div>
                         </t>
+                        <br/><br/>
                         <div class="page">
-                            <h2>
+                            <h2 style="font-size: 16px">
+                                <strong>Albarán:</strong>
                                 <span t-field="o.name"/>
                             </h2>
+                            <br/>
                             <div class="row mt32 mb32">
-                                <div t-if="o.origin" class="col-auto" name="div_origin">
+                                <div t-if="o.origin" class="col-auto" name="div_origin" style="font-size: 12px">
                                     <strong>Pedido:</strong>
                                     <p t-field="o.origin"/>
                                 </div>
-                                <div t-if="o.state" class="col-auto" name="div_sched_date">
+                                <div t-if="o.state" class="col-auto" name="div_sched_date" style="font-size: 12px">
                                     <strong>Fecha de entrega:</strong>
                                     <t t-if="o.state == 'done'">
                                         <p t-field="o.date_done"/>
@@ -102,18 +105,18 @@
                             <table class="table table-sm" t-if="o.state!='done'" name="stock_move_table">
                                 <thead>
                                     <tr>
-                                        <th name="th_sm_product">
+                                        <th name="th_sm_product" style="font-size: 12px">
                                             <strong>Producto</strong>
                                         </th>
-                                        <th name="th_sm_ordered">
+                                        <th name="th_sm_ordered" style="font-size: 12px">
                                             <strong>Pedido</strong>
                                         </th>
-                                        <th name="th_sm_quantity">
+                                        <th name="th_sm_quantity" style="font-size: 12px">
                                             <strong>Entregado</strong>
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody style="font-size: 12px">
                                     <t t-set="lines" t-value="o.move_lines.filtered(lambda x: x.product_uom_qty)"/>
                                     <tr t-foreach="lines" t-as="move">
                                         <td>
@@ -138,7 +141,7 @@
                                 <t t-set="has_serial_number" t-value="False"/>
                                 <t t-set="has_serial_number" t-value="o.move_line_ids.mapped('lot_id')"
                                    groups="stock.group_lot_on_delivery_slip"/>
-                                <thead>
+                                <thead style="font-size: 10px">
                                     <tr>
                                         <th name="th_sml_product">
                                             <strong>Producto</strong>
@@ -157,11 +160,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- This part gets complicated with different use cases (additional use cases in extensions of this report):
-                                            1. If serial numbers are used and set to print on delivery slip => print lines as is, otherwise group them by overlapping
-                                                product + description + uom combinations
-                                            2. If any packages are assigned => split products up by package (or non-package) and then apply use case 1 -->
-                                    <!-- If has destination packages => create sections of corresponding products -->
                                     <t t-if="o.has_packages" name="has_packages">
                                         <t t-set="packages" t-value="o.move_line_ids.mapped('result_package_id')"/>
                                         <t t-foreach="packages" t-as="package">
@@ -222,7 +220,7 @@
                                 <p class="mt-5">
                                     <span>Cantidades restantes aún no entregadas:</span>
                                 </p>
-                                <table class="table table-sm" name="stock_backorder_table" style="table-layout: fixed;">
+                                <table class="table table-sm" name="stock_backorder_table" style="table-layout: fixed; font-size: 10px">
                                     <thead>
                                         <tr>
                                             <th name="th_sb_product">
@@ -255,6 +253,13 @@
                                     </tbody>
                                 </table>
                             </t>
+
+                            <div class="row mt32" name="div_note" style="font-size: 12px">
+                                <div class="col-12">
+                                    <strong>Descripción del servicio:</strong>
+                                    <p t-field="o.note"/>
+                                </div>
+                            </div>
 
                             <div t-if="o.signature" class="mt32 ml64 mr4" name="signature">
                                 <div class="offset-8">
