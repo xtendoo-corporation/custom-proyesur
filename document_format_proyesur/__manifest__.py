@@ -22,7 +22,7 @@
         "views/brico/invoice/report_invoice_document.xml",
         "views/brico/delivery/report_delivery_document.xml",
         "views/brico/sale_order/report_instalador_document.xml",
-        "views/brico/sale_order/report_driver_document.xml",
+        "views/brico/sale_order/report_transporter_document.xml",
     ],
     "installable": True,
     "auto_install": False,

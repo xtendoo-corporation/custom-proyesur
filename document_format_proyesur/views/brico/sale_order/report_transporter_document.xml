@@ -2,29 +2,31 @@
 <odoo>
     <data>
 
-        <record id="report_instalador_sale_brico" model="ir.actions.report">
-            <field name="name">Parte instalador BricoDepot</field>
+        <record id="report_transporter_sale_brico" model="ir.actions.report">
+            <field name="name">Parte Trabajo Transportista BricoDepot</field>
             <field name="model">sale.order</field>
             <field name="report_type">qweb-pdf</field>
-            <field name="report_name">document_format_proyesur.instalador_report_brico</field>
-            <field name="report_file">document_format_proyesur.instalador_report_brico</field>
+            <field name="report_name">document_format_proyesur.transporter_report_brico</field>
+            <field name="report_file">document_format_proyesur.transporter_report_brico</field>
             <field name="paperformat_id" ref="document_format_proyesur.paperformat_proyesur_report"/>
         </record>
 
-        <template id="instalador_report_brico">
-            <t t-name="document_format_proyesur.instalador_report_brico">
+        <template id="transporter_report_brico">
+            <t t-name="document_format_proyesur.transporter_report_brico">
                 <t t-call="web.html_container">
                     <t t-foreach="docs" t-as="doc">
-                        <t t-call="document_format_proyesur.instalador_document_template" t-lang="doc.partner_id.lang"/>
-                        <t t-call="document_format_proyesur.instalador_document_template" t-lang="doc.partner_id.lang"/>
+                        <t t-call="document_format_proyesur.transporter_document_template"
+                           t-lang="doc.partner_id.lang"/>
+                        <t t-call="document_format_proyesur.transporter_document_template"
+                           t-lang="doc.partner_id.lang"/>
                     </t>
                 </t>
             </t>
         </template>
 
         <template
-            id="document_format_proyesur.instalador_document_template">
-            <t t-name="sale_document_template">
+            id="document_format_proyesur.transporter_document_template">
+            <t t-name="transporter_document_template">
                 <t t-call="document_format_proyesur.external_layout_boxed_brico_sale">
                     <t t-set="company" t-value="doc.company_id"/>
                     <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
@@ -68,7 +70,7 @@
                         <div class="oe_structure"/>
 
                         <h2 class="mt16" style="font-size: 18px">
-                            <span>PARTE DEL INSTALADOR</span>
+                            <span>PARTE DE TRABAJO DEL TRANSPORTISTA</span>
                         </h2>
 
                         <div class="row mt32 mb32" id="informations">
@@ -99,26 +101,23 @@
                         </div>
 
                         <div class="custom-div" name="description">
-                            <strong>Descripción del Servicio:</strong>
-                            <p t-field="doc.order_line.name"/>
+                            <strong>Descripción Servicio:</strong>
+                            <p class="m-0" t-field="doc.order_line.name"/>
                         </div>
-
                         <br/>
-
                         <div class="custom-div" name="data">
-                            <strong>Datos del Instalador:</strong>
+                            <strong>Parte de Ausencia:</strong>
                             <p>
-                                Nombre:
-                                <br/>
-                                Telefono:
+                                Hemos estado en su domicilio el dia .......................... a las ............... para
+                                hacerle entrega del material comprado en Bricodepot con Nº de Ticket ..................
+                                Ponganse en contacto al numero de telefono 610878402 para concertar una nueva fecha de
+                                entrega.
                             </p>
                         </div>
-
                         <br/>
-
                         <div class="custom-div" name="payment">
                             <strong>Cantidad pendiente de cobro:</strong>
-                            <p t-field="doc.amount_total"/>
+                            <p class="m-0" t-field="doc.amount_total"/>
                         </div>
 
                         <!-- Is there a discount on at least one line? -->
