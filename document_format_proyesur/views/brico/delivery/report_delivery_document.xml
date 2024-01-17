@@ -21,7 +21,6 @@
             </t>
         </template>
 
-
         <template
             id="document_format_proyesur.delivery_document_template">
             <t t-name="sale_document_template">
