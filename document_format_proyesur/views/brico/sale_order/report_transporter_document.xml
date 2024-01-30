@@ -102,7 +102,7 @@
 
                         <div class="custom-div" name="description">
                             <strong>Descripción Servicio:</strong>
-                            <p class="m-0" t-field="doc.order_line.name"/>
+                            <p class="m-0" t-field="doc.order_line[0].name"/>
                         </div>
                         <br/>
                         <div class="custom-div" name="data">
