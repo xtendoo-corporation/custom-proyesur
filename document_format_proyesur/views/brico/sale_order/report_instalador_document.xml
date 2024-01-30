@@ -100,7 +100,7 @@
 
                         <div class="custom-div" name="description">
                             <strong>Descripción del Servicio:</strong>
-                            <p t-field="doc.order_line.name"/>
+                            <p t-field="doc.order_line[0].name"/>
                         </div>
 
                         <br/>
