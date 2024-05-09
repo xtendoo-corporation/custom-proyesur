@@ -3,29 +3,29 @@
     <data>
         <template id="document_format_proyesur.external_layout_boxed_brico_invoice">
             <t t-name="external_layout_boxed_brico_invoice">
-                <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
-                    <div class="o_boxed_header" style="padding: 10px; margin: 0;">
-                        <div class="row mb-2">
-                            <div class="col-6">
-                                <img src="/document_format_proyesur/static/src/img/proyesur_logo.png"
-                                     style="max-width: 120px;"/>
-                            </div>
-                            <div class="col-6 d-flex justify-content-center align-items-center">
-                                <div name="company_address" class="mb-1">
-                                    <ul class="list-unstyled" t-if="company.company_details or forced_vat">
-                                        <li t-if="company.company_details">
-                                            <t t-esc="company.company_details"/>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="company_phone_email" style="font-size: 10px; margin-left: 10px;">
-                                    <span>610878402</span><br/>
-                                    <span>bricomontajesdelsur@gmail.com</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!--                <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">-->
+<!--                    <div class="o_boxed_header" style="padding: 10px; margin: 0;">-->
+<!--                        <div class="row mb-2">-->
+<!--                            <div class="col-6">-->
+<!--                                <img src="/document_format_proyesur/static/src/img/proyesur_logo.png"-->
+<!--                                     style="max-width: 120px;"/>-->
+<!--                            </div>-->
+<!--                            <div class="col-6 d-flex justify-content-center align-items-center">-->
+<!--                                <div name="company_address" class="mb-1">-->
+<!--                                    <ul class="list-unstyled" t-if="company.company_details or forced_vat">-->
+<!--                                        <li t-if="company.company_details">-->
+<!--                                            <t t-esc="company.company_details"/>-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                                <div class="company_phone_email" style="font-size: 10px; margin-left: 10px;">-->
+<!--                                    <span>610878402</span><br/>-->
+<!--                                    <span>bricomontajesdelsur@gmail.com</span>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
 
                 <div
                     t-attf-class="article o_report_layout_boxed o_company_#{company.id}_layout {{  'o_layout_background' if company.layout_background in ['Geometric', 'Custom']  else  '' }}"

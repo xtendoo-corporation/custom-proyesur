@@ -50,25 +50,16 @@
                             width: 48%;
                             margin-left: 2%; /* Ajusta el margen izquierdo para controlar el espacio */
                             box-sizing: border-box;
-                            float: left;
+                            float: right;
                             }
+
                         </style>
                         <div class="info-container">
-                            <div class="user_info" style="font-size: 14px;">
-                                <span t-field="o.user_id.company_id.name"/>
-                                <br/>
-                                <span t-field="o.user_id.company_id.vat"/>
-                                <p>
-                                    <span t-field="o.user_id.company_id.street"/>
-                                    <br/>
-                                    <span t-field="o.user_id.company_id.city"/>
-                                    <br/>
-                                    <span t-field="o.user_id.company_id.zip"/>
-                                    <br/>
-                                    <span t-field="o.user_id.company_id.country_id.name"/>
-                                </p>
+                            <div id="company_logo">
+                                <img src="/document_format_proyesur/static/src/img/proyesur_logo.png"
+                                     style="max-width: 120px;"/>
+<!--                                <span t-field="o.company_id.logo"/>-->
                             </div>
-
                             <div class="partner_info" style="font-size: 14px;">
                                 <span t-field="o.partner_id.name"/>
                                 <br/>
@@ -81,6 +72,20 @@
                                     <span t-field="o.partner_id.zip"/>
                                     <br/>
                                     <span t-field="o.partner_id.country_id.name"/>
+                                </p>
+                            </div>
+                            <div class="user_info" style="font-size: 14px;">
+                                <span t-field="o.company_id.name"/>
+                                <br/>
+                                <span t-field="o.company_id.vat"/>
+                                <p>
+                                    <span t-field="o.company_id.street"/>
+                                    <br/>
+                                    <span t-field="o.company_id.city"/>
+                                    <br/>
+                                    <span t-field="o.company_id.zip"/>
+                                    <br/>
+                                    <span t-field="o.company_id.country_id.name"/>
                                 </p>
                             </div>
                         </div>
