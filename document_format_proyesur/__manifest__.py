@@ -3,7 +3,7 @@
     "summary": """Formatos de documentos de Proyesur""",
     "version": "15.0.1.0.0",
     "description": """Formatos de documentos de Proyesur""",
-    "author": "Jaime Millán",
+    "author": "Salvador Gonzalez, Abraham Carrasco, Xtendoo",
     "company": "Xtendoo",
     "website": "https://xtendoo.es",
     "category": "Extra Tools",

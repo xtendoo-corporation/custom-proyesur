@@ -60,32 +60,25 @@
                                      style="max-width: 120px;"/>
 <!--                                <span t-field="o.company_id.logo"/>-->
                             </div>
-                            <div class="partner_info" style="font-size: 14px;">
+                            <div class="partner_info" style="font-size: 12px;">
                                 <span t-field="o.partner_id.name"/>
                                 <br/>
                                 <span t-field="o.partner_id.vat"/>
                                 <p>
                                     <span t-field="o.partner_id.street"/>
                                     <br/>
-                                    <span t-field="o.partner_id.city"/>
+                                    <span t-field="o.partner_id.city"/> <span t-field="o.partner_id.zip"/>
                                     <br/>
-                                    <span t-field="o.partner_id.zip"/>
-                                    <br/>
-                                    <span t-field="o.partner_id.country_id.name"/>
                                 </p>
                             </div>
-                            <div class="user_info" style="font-size: 14px;">
+                            <div class="user_info" style="font-size: 12px;">
                                 <span t-field="o.company_id.name"/>
                                 <br/>
                                 <span t-field="o.company_id.vat"/>
                                 <p>
                                     <span t-field="o.company_id.street"/>
                                     <br/>
-                                    <span t-field="o.company_id.city"/>
-                                    <br/>
-                                    <span t-field="o.company_id.zip"/>
-                                    <br/>
-                                    <span t-field="o.company_id.country_id.name"/>
+                                    <span t-field="o.company_id.city"/> <span t-field="o.company_id.zip"/>
                                 </p>
                             </div>
                         </div>
@@ -95,7 +88,7 @@
                         <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
                         <t t-set="forced_vat"
                            t-value="o.fiscal_position_id.foreign_vat"/>
-                        <h2 style="font-size: 14px;">
+                        <h2 style="font-size: 12px;">
                             <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'">Factura</span>
                             <span t-if="o.move_type == 'out_invoice' and o.state == 'draft'">Factura borrador
                             </span>
@@ -108,7 +101,7 @@
                             <span t-if="o.name != '/'" t-field="o.name"/>
                         </h2>
 
-                        <div id="informations" class="row mt-4 mb-4" style="font-size: 12 px">
+                        <div id="informations" class="row mt-4 mb-4" style="font-size: 12px">
                             <div class="col-auto col-3 mw-100 mb-2" t-if="o.invoice_date" name="invoice_date">
                                 <t t-if="o.move_type == 'out_invoice'">
                                     <strong>Fecha de factura:</strong>
@@ -126,28 +119,27 @@
                             </div>
                             <div class="col-auto col-3 mw-100 mb-2"
                                  t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'"
-                                 name="due_date" style="font-size: 12 px">
+                                 name="due_date" style="font-size: 12px">
                                 <strong>Fecha de vencimiento:</strong>
                                 <p class="m-0" t-field="o.invoice_date_due"/>
                             </div>
-                            <div class="col-auto col-3 mw-100 mb-2" t-if="o.partner_id.ref"
-                                 name="customer_code" style="font-size: 12 px">
-                                <strong>Código de cliente:</strong>
-                                <p class="m-0" t-field="o.partner_id.ref"/>
-                            </div>
+<!--                            <div class="col-auto col-3 mw-100 mb-2" t-if="o.partner_id.ref"-->
+<!--                                 name="customer_code" style="font-size: 10 px">-->
+<!--                                <strong>Código de cliente:</strong>-->
+<!--                                <p class="m-0" t-field="o.partner_id.ref"/>-->
+<!--                            </div>-->
                             <div class="col-auto col-3 mw-100 mb-2" t-if="o.ref" name="reference"
-                                 style="font-size: 12 px">
+                                 style="font-size: 10 px">
                                 <strong>Referencia:</strong>
                                 <p class="m-0" t-field="o.ref"/>
                             </div>
                         </div>
 
                         <t t-set="display_discount" t-value="any(l.discount for l in o.invoice_line_ids)"/>
-
-                        <table class="table table-sm o_main_table" name="invoice_line_table">
-                            <thead style="font-size: 12 px">
+                        <table class="table table-sm o_main_table" name="invoice_line_table" style="font-size: 12px !important">
+                            <thead style="font-size: 10 px">
                                 <tr>
-                                    <th name="th_description" class="text-left">
+                                    <th name="th_description" class="text-left" style="font-size: 12px !important">
                                         <span>Descripción</span>
                                     </th>
                                     <th name="th_quantity" class="text-right">
@@ -155,7 +147,7 @@
                                     </th>
                                     <th name="th_priceunit"
                                         t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
-                                        <span>Precio unitario</span>
+                                        <span>Precio</span>
                                     </th>
                                     <th name="th_price_unit" t-if="display_discount"
                                         t-attf-class="text-right {{ 'd-none d-md-table-cell' if report_type == 'html' else '' }}">
@@ -173,7 +165,7 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody class="invoice_tbody" style="font-size: 12 px">
+                            <tbody class="invoice_tbody" style="font-size: 12px !important">
                                 <t t-set="current_subtotal" t-value="0"/>
                                 <t t-set="lines"
                                    t-value="o.invoice_line_ids.sorted(key=lambda l: (-l.sequence, l.date, l.move_name, -l.id), reverse=True)"/>
@@ -240,7 +232,7 @@
                         </table>
 
                         <div class="clearfix">
-                            <div id="total" class="row">
+                            <div id="total" class="row" style="font-size: 12px !important">
                                 <div
                                     t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto">
                                     <table class="table table-sm" style="page-break-inside: avoid;">
@@ -293,26 +285,26 @@
                         <!--                                </b>-->
                         <!--                            </p>-->
                         <br/>
-                        <strong>Datos bancarios:</strong>
+                        <strong style="font-size: 12px !important">Datos bancarios:</strong>
                         <p t-if="o.partner_bank_id">
-                            <span t-field="o.user_id.company_id.bank_ids.bank_id"/>
-                            <span t-field="o.user_id.company_id.bank_ids.acc_number"/>
+                            <span t-field="o.user_id.company_id.bank_ids.bank_id" style="font-size: 12px !important"/>
+                            <span t-field="o.user_id.company_id.bank_ids.acc_number" style="font-size: 12px !important"/>
                             <br/>
                         </p>
                         <p t-if="o.invoice_payment_term_id" name="payment_term">
-                            <span t-field="o.invoice_payment_term_id.note"/>
+                            <span t-field="o.invoice_payment_term_id.note" style="font-size: 12px !important"/>
                         </p>
-                        <div t-if="not is_html_empty(o.narration)" name="comment">
-                            <span t-field="o.narration"/>
+                        <div t-if="not is_html_empty(o.narration)" name="comment" style="font-size: 12px !important">
+                            <span t-field="o.narration" style="font-size: 12px !important"/>
                         </div>
-                        <p t-if="not is_html_empty(o.fiscal_position_id.note)" name="note">
-                            <span t-field="o.fiscal_position_id.note"/>
+                        <p t-if="not is_html_empty(o.fiscal_position_id.note)" name="note" style="font-size: 12px !important">
+                            <span t-field="o.fiscal_position_id.note" style="font-size: 12px !important"/>
                         </p>
-                        <p t-if="o.invoice_incoterm_id" name="incoterm">
-                            <strong>Incoterm:</strong>
-                            <span t-field="o.invoice_incoterm_id.code"/>
+                        <p t-if="o.invoice_incoterm_id" name="incoterm" style="font-size: 12px !important">
+                            <strong style="font-size: 12px !important">Incoterm:</strong>
+                            <span t-field="o.invoice_incoterm_id.code" style="font-size: 12px !important"/>
                             -
-                            <span t-field="o.invoice_incoterm_id.name"/>
+                            <span t-field="o.invoice_incoterm_id.name" style="font-size: 12px !important"/>
                         </p>
                         <!--                            <div id="qrcode" t-if="o.display_qr_code and o.amount_residual &gt; 0">-->
                         <!--                                <p t-if="qr_code_urls.get(o.id)">-->
