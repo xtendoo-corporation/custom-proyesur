@@ -10,7 +10,8 @@
     "license": "AGPL-3",
     "depends": [
         "base",
-        "web"
+        "web",
+        "account",
     ],
     "data": [
         "views/paper_format.xml",
