@@ -12,6 +12,7 @@
         "base",
         "web",
         "account",
+        "purchase",
     ],
     "data": [
         "views/paper_format.xml",
