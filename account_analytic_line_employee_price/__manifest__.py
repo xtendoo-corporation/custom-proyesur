@@ -2,7 +2,7 @@
 
 {
     "name": "Account Analytic Line Employee Price",
-    "version": "15.0.1.0.2",
+    "version": "17.0.1.0.2",
     "category": "Generic Modules/Analytic",
     "development_status": "Production/Stable",
     "author": "Camilo <Xtendoo>",
