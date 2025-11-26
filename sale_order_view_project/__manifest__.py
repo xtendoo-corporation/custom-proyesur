@@ -4,7 +4,7 @@
     "name": "Sale Order View Project",
     "summary": """
         Sale Order View Project""",
-    "version": "15.0",
+    "version": "18.0",
     "depends": [
         "sale_management",
         "contacts",
