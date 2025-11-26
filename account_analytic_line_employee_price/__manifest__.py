@@ -12,7 +12,7 @@
     "depends": [
         "account",
         "hr",
-        "hr_timesheet_sheet"
+        "hr_timesheet"
     ],
     "data": [
         "views/analytic_account_line_view.xml",
