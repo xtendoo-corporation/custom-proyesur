@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <odoo>
     <data>
         <template
@@ -6,77 +6,130 @@
             inherit_id="account.report_invoice_document"
         >
             <!-- Eliminar campo origen del bloque informaciones -->
-            <xpath expr="//div[@id='informations']/div[@name='origin']" position="replace"/>
+            <xpath expr="//div[@id='informations']/div[@name='origin']" position="replace" />
 
             <!-- Dirección de envío sin país -->
-            <xpath expr="//div[@name='shipping_address_block']/div[@t-field='o.partner_shipping_id']" position="replace">
+            <xpath
+                expr="//div[@name='shipping_address_block']/div[@t-field='o.partner_shipping_id']"
+                position="replace">
                 <div>
-                    <div t-if="o.partner_shipping_id.name"><span t-field="o.partner_shipping_id.name"/></div>
-                    <div t-if="o.partner_shipping_id.street"><span t-field="o.partner_shipping_id.street"/></div>
-                    <div t-if="o.partner_shipping_id.street2"><span t-field="o.partner_shipping_id.street2"/></div>
-                    <div t-if="o.partner_shipping_id.zip or o.partner_shipping_id.city">
-                        <span t-if="o.partner_shipping_id.zip" t-field="o.partner_shipping_id.zip"/>
-                        <t t-if="o.partner_shipping_id.zip and o.partner_shipping_id.city"> </t>
-                        <span t-if="o.partner_shipping_id.city" t-field="o.partner_shipping_id.city"/>
+                    <div t-if="o.partner_shipping_id.name">
+                        <span t-field="o.partner_shipping_id.name" />
                     </div>
-                    <div t-if="o.partner_shipping_id.state_id"><span t-field="o.partner_shipping_id.state_id"/></div>
+                    <!-- <div t-if="o.partner_shipping_id.vat"><t
+                            t-esc="o.partner_shipping_id.vat_label or 'NIF/CIF'" />: <span
+                            t-field="o.partner_shipping_id.vat" /></div> -->
+                    <div t-if="o.partner_shipping_id.street">
+                        <span t-field="o.partner_shipping_id.street" />
+                    </div>
+                    <div t-if="o.partner_shipping_id.street2">
+                        <span t-field="o.partner_shipping_id.street2" />
+                    </div>
+                    <div t-if="o.partner_shipping_id.zip or o.partner_shipping_id.city">
+                        <span t-if="o.partner_shipping_id.zip" t-field="o.partner_shipping_id.zip" />
+                        <t t-if="o.partner_shipping_id.zip and o.partner_shipping_id.city"> </t>
+                        <span t-if="o.partner_shipping_id.city" t-field="o.partner_shipping_id.city" />
+                    </div>
+                    <div t-if="o.partner_shipping_id.state_id">
+                        <span t-field="o.partner_shipping_id.state_id" />
+                    </div>
                 </div>
             </xpath>
 
             <!-- Dirección cliente sin país (caso envío distinto) -->
-            <xpath expr="//div[@name='address_not_same_as_shipping']//address[@t-field='o.partner_id']" position="replace">
+            <xpath
+                expr="//div[@name='address_not_same_as_shipping']//address[@t-field='o.partner_id']"
+                position="replace">
                 <address class="mb-0">
-                    <div t-if="o.partner_id.name"><span t-field="o.partner_id.name"/></div>
-                    <div t-if="o.partner_id.street"><span t-field="o.partner_id.street"/></div>
-                    <div t-if="o.partner_id.street2"><span t-field="o.partner_id.street2"/></div>
-                    <div t-if="o.partner_id.zip or o.partner_id.city">
-                        <span t-if="o.partner_id.zip" t-field="o.partner_id.zip"/>
-                        <t t-if="o.partner_id.zip and o.partner_id.city"> </t>
-                        <span t-if="o.partner_id.city" t-field="o.partner_id.city"/>
+                    <div t-if="o.partner_id.name">
+                        <span t-field="o.partner_id.name" />
                     </div>
-                    <div t-if="o.partner_id.state_id"><span t-field="o.partner_id.state_id"/></div>
+                    <div t-if="o.partner_id.vat"><t t-esc="o.partner_id.vat_label or 'NIF/CIF'" />: <span
+                            t-field="o.partner_id.vat" /></div>
+                    <div t-if="o.partner_id.street">
+                        <span t-field="o.partner_id.street" />
+                    </div>
+                    <div t-if="o.partner_id.street2">
+                        <span t-field="o.partner_id.street2" />
+                    </div>
+                    <div t-if="o.partner_id.zip or o.partner_id.city">
+                        <span t-if="o.partner_id.zip" t-field="o.partner_id.zip" />
+                        <t t-if="o.partner_id.zip and o.partner_id.city"> </t>
+                        <span t-if="o.partner_id.city" t-field="o.partner_id.city" />
+                    </div>
+                    <div t-if="o.partner_id.state_id">
+                        <span t-field="o.partner_id.state_id" />
+                    </div>
                 </address>
             </xpath>
 
             <!-- Dirección cliente sin país (caso envío igual) -->
-            <xpath expr="//div[@name='address_same_as_shipping']//address[@t-field='o.partner_id']" position="replace">
+            <xpath expr="//div[@name='address_same_as_shipping']//address[@t-field='o.partner_id']"
+                position="replace">
                 <address class="mb-0">
-                    <div t-if="o.partner_id.name"><span t-field="o.partner_id.name"/></div>
-                    <div t-if="o.partner_id.street"><span t-field="o.partner_id.street"/></div>
-                    <div t-if="o.partner_id.street2"><span t-field="o.partner_id.street2"/></div>
-                    <div t-if="o.partner_id.zip or o.partner_id.city">
-                        <span t-if="o.partner_id.zip" t-field="o.partner_id.zip"/>
-                        <t t-if="o.partner_id.zip and o.partner_id.city"> </t>
-                        <span t-if="o.partner_id.city" t-field="o.partner_id.city"/>
+                    <div t-if="o.partner_id.name">
+                        <span t-field="o.partner_id.name" />
                     </div>
-                    <div t-if="o.partner_id.state_id"><span t-field="o.partner_id.state_id"/></div>
+                    <div t-if="o.partner_id.vat"><t t-esc="o.partner_id.vat_label or 'NIF/CIF'" />: <span
+                            t-field="o.partner_id.vat" /></div>
+                    <div t-if="o.partner_id.street">
+                        <span t-field="o.partner_id.street" />
+                    </div>
+                    <div t-if="o.partner_id.street2">
+                        <span t-field="o.partner_id.street2" />
+                    </div>
+                    <div t-if="o.partner_id.zip or o.partner_id.city">
+                        <span t-if="o.partner_id.zip" t-field="o.partner_id.zip" />
+                        <t t-if="o.partner_id.zip and o.partner_id.city"> </t>
+                        <span t-if="o.partner_id.city" t-field="o.partner_id.city" />
+                    </div>
+                    <div t-if="o.partner_id.state_id">
+                        <span t-field="o.partner_id.state_id" />
+                    </div>
                 </address>
             </xpath>
 
             <!-- Dirección cliente sin país (sin envío) -->
-            <xpath expr="//div[@name='no_shipping']//address[@t-field='o.partner_id']" position="replace">
+            <xpath expr="//div[@name='no_shipping']//address[@t-field='o.partner_id']"
+                position="replace">
                 <address class="mb-0">
-                    <div t-if="o.partner_id.name"><span t-field="o.partner_id.name"/></div>
-                    <div t-if="o.partner_id.street"><span t-field="o.partner_id.street"/></div>
-                    <div t-if="o.partner_id.street2"><span t-field="o.partner_id.street2"/></div>
-                    <div t-if="o.partner_id.zip or o.partner_id.city">
-                        <span t-if="o.partner_id.zip" t-field="o.partner_id.zip"/>
-                        <t t-if="o.partner_id.zip and o.partner_id.city"> </t>
-                        <span t-if="o.partner_id.city" t-field="o.partner_id.city"/>
+                    <div t-if="o.partner_id.name">
+                        <span t-field="o.partner_id.name" />
                     </div>
-                    <div t-if="o.partner_id.state_id"><span t-field="o.partner_id.state_id"/></div>
+                    <div t-if="o.partner_id.vat"><t t-esc="o.partner_id.vat_label or 'NIF/CIF'" />: <span
+                            t-field="o.partner_id.vat" /></div>
+                    <div t-if="o.partner_id.street">
+                        <span t-field="o.partner_id.street" />
+                    </div>
+                    <div t-if="o.partner_id.street2">
+                        <span t-field="o.partner_id.street2" />
+                    </div>
+                    <div t-if="o.partner_id.zip or o.partner_id.city">
+                        <span t-if="o.partner_id.zip" t-field="o.partner_id.zip" />
+                        <t t-if="o.partner_id.zip and o.partner_id.city"> </t>
+                        <span t-if="o.partner_id.city" t-field="o.partner_id.city" />
+                    </div>
+                    <div t-if="o.partner_id.state_id">
+                        <span t-field="o.partner_id.state_id" />
+                    </div>
                 </address>
             </xpath>
 
-            <!-- Quitar NIF/VAT -->
-            <xpath expr="//div[@id='partner_vat_address_not_same_as_shipping']" position="replace"/>
-            <xpath expr="//div[@id='partner_vat_address_same_as_shipping']" position="replace"/>
-            <xpath expr="//div[@id='partner_vat_no_shipping']" position="replace"/>
+            <!-- Quitar NIF/VAT (No necesario si ya lo manejamos arriba, pero mantengo limpieza si
+            quedan residuos) -->
+            <xpath expr="//div[@id='partner_vat_address_not_same_as_shipping']" position="replace" />
+            <xpath expr="//div[@id='partner_vat_address_same_as_shipping']" position="replace" />
+            <xpath expr="//div[@id='partner_vat_no_shipping']" position="replace" />
 
             <!-- Quitar ICE -->
-            <xpath expr="//div[@name='address_not_same_as_shipping']//div[contains(@t-if, 'company_registry')]" position="replace"/>
-            <xpath expr="//div[@name='address_same_as_shipping']//div[contains(@t-if, 'company_registry')]" position="replace"/>
-            <xpath expr="//div[@name='no_shipping']//div[contains(@t-if, 'company_registry')]" position="replace"/>
+            <xpath
+                expr="//div[@name='address_not_same_as_shipping']//div[contains(@t-if, 'company_registry')]"
+                position="replace" />
+            <xpath
+                expr="//div[@name='address_same_as_shipping']//div[contains(@t-if, 'company_registry')]"
+                position="replace" />
+            <xpath expr="//div[@name='no_shipping']//div[contains(@t-if, 'company_registry')]"
+                position="replace" />
         </template>
 
         <template
@@ -89,40 +142,40 @@
             </xpath>
         </template>
 
-<!--        <template-->
-<!--            id="document_format_proyesur.document_tax_totals_document_proyesur"-->
-<!--            inherit_id="account.document_tax_totals"-->
-<!--        >-->
-<!--            <xpath expr="//tr[contains(@class, 'o_total')]" position="replace">-->
-<!--                <t t-if="(o and o.tiene_retenciones) or tiene_retenciones">-->
-<!--                    <tr class="border-black o_total">-->
-<!--                        <td>-->
-<!--                            <strong>Total factura</strong>-->
-<!--                        </td>-->
-<!--                        <td class="text-right">-->
-<!--                            <span t-esc="tax_totals['total_without_retention']"/>-->
-<!--                        </td>-->
-<!--                    </tr>-->
-<!--                    <tr class="border-black o_total">-->
-<!--                        <td>-->
-<!--                            <strong>Total a pagar</strong>-->
-<!--                        </td>-->
-<!--                        <td class="text-right">-->
-<!--                            <span t-esc="tax_totals['formatted_amount_total']"/>-->
-<!--                        </td>-->
-<!--                    </tr>-->
-<!--                </t>-->
-<!--                <t t-if="not ((o and o.tiene_retenciones) or tiene_retenciones)">-->
-<!--                    <tr class="border-black o_total">-->
-<!--                        <td>-->
-<!--                            <strong>Total</strong>-->
-<!--                        </td>-->
-<!--                        <td class="text-right">-->
-<!--                            <span t-esc="tax_totals['formatted_amount_total']"/>-->
-<!--                        </td>-->
-<!--                    </tr>-->
-<!--                </t>-->
-<!--            </xpath>-->
-<!--        </template>-->
+        <!--        <template-->
+        <!--            id="document_format_proyesur.document_tax_totals_document_proyesur"-->
+        <!--            inherit_id="account.document_tax_totals"-->
+        <!--        >-->
+        <!--            <xpath expr="//tr[contains(@class, 'o_total')]" position="replace">-->
+        <!--                <t t-if="(o and o.tiene_retenciones) or tiene_retenciones">-->
+        <!--                    <tr class="border-black o_total">-->
+        <!--                        <td>-->
+        <!--                            <strong>Total factura</strong>-->
+        <!--                        </td>-->
+        <!--                        <td class="text-right">-->
+        <!--                            <span t-esc="tax_totals['total_without_retention']"/>-->
+        <!--                        </td>-->
+        <!--                    </tr>-->
+        <!--                    <tr class="border-black o_total">-->
+        <!--                        <td>-->
+        <!--                            <strong>Total a pagar</strong>-->
+        <!--                        </td>-->
+        <!--                        <td class="text-right">-->
+        <!--                            <span t-esc="tax_totals['formatted_amount_total']"/>-->
+        <!--                        </td>-->
+        <!--                    </tr>-->
+        <!--                </t>-->
+        <!--                <t t-if="not ((o and o.tiene_retenciones) or tiene_retenciones)">-->
+        <!--                    <tr class="border-black o_total">-->
+        <!--                        <td>-->
+        <!--                            <strong>Total</strong>-->
+        <!--                        </td>-->
+        <!--                        <td class="text-right">-->
+        <!--                            <span t-esc="tax_totals['formatted_amount_total']"/>-->
+        <!--                        </td>-->
+        <!--                    </tr>-->
+        <!--                </t>-->
+        <!--            </xpath>-->
+        <!--        </template>-->
     </data>
 </odoo>
