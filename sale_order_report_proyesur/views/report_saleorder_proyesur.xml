@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template
+        id="report_saleorder_document_proyesur"
+        inherit_id="sale.report_saleorder_document">
+
+
+        <!-- Reemplazar el layout de la tabla de líneas -->
+        <xpath expr="//table[contains(@class,'o_main_table')]" position="replace">
+            <style>
+                .proyesur_table_header {
+                border-bottom: 2px solid #333;
+                font-weight: bold;
+                font-size: 12px;
+                text-transform: uppercase;
+                padding-bottom: 5px;
+                margin-bottom: 5px;
+                width: 100%;
+                display: block;
+                clear: both;
+                }
+                .proyesur_line {
+                border-bottom: 1px solid #dee2e6;
+                padding: 4px 0;
+                width: 100%;
+                display: block;
+                clear: both;
+                page-break-inside: auto !important;
+                }
+                .proyesur_col {
+                float: left;
+                padding: 2px 4px;
+                min-height: 1px;
+                }
+                .proyesur_desc { width: 45%; word-wrap: break-word; }
+                .proyesur_qty { width: 10%; text-align: right; }
+                .proyesur_price { width: 15%; text-align: right; }
+                .proyesur_taxes { width: 15%; text-align: right; }
+                .proyesur_total { width: 15%; text-align: right; }
+
+                /* Permitir que los párrafos dentro de la descripción se corten entre páginas */
+                .proyesur_desc p {
+                margin: 0;
+                padding: 0;
+                page-break-inside: auto !important;
+                }
+            </style>
+
+            <!-- Cabecera manual -->
+            <div class="proyesur_table_header">
+                <div class="proyesur_col proyesur_desc"
+                    t-att-style="'width: 35%' if display_discount else 'width: 45%'">Descripción</div>
+                <div class="proyesur_col proyesur_qty">Cantidad</div>
+                <div class="proyesur_col proyesur_price">P. Unit.</div>
+                <div t-if="display_discount" class="proyesur_col"
+                    style="width: 10%; text-align: right;">Dto.%</div>
+                <div class="proyesur_col proyesur_taxes">Impuestos</div>
+                <div class="proyesur_col proyesur_total">Importe</div>
+                <div style="clear: both;" />
+            </div>
+
+            <!-- Bucle de líneas -->
+            <t t-set="current_subtotal" t-value="0" />
+            <t t-set="current_section" t-value="None" />
+            <t t-foreach="lines_to_report" t-as="line">
+                <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal" />
+
+                <div class="proyesur_line">
+                    <t t-if="not line.display_type">
+                        <!-- Descripción cortable -->
+                        <div class="proyesur_col proyesur_desc"
+                            t-att-style="'width: 35%' if display_discount else 'width: 45%'">
+                            <t t-foreach="(line.name or '').split('\n')" t-as="name_line">
+                                <p t-if="name_line.strip()" t-esc="name_line" />
+                            </t>
+                        </div>
+                        <!-- Cantidad -->
+                        <div class="proyesur_col proyesur_qty">
+                            <span t-field="line.product_uom_qty" />
+                        </div>
+                        <!-- Precio Unitario -->
+                        <div class="proyesur_col proyesur_price">
+                            <span t-field="line.price_unit" />
+                        </div>
+                        <!-- Descuento -->
+                        <div t-if="display_discount" class="proyesur_col"
+                            style="width: 10%; text-align: right;">
+                            <span t-field="line.discount" />
+                        </div>
+                        <!-- Impuestos -->
+                        <div class="proyesur_col proyesur_taxes">
+                            <t t-set="taxes"
+                                t-value="', '.join([(tax.invoice_label or tax.name) for tax in line.tax_id])" />
+                            <span t-out="taxes" />
+                        </div>
+                        <!-- Subtotal -->
+                        <div class="proyesur_col proyesur_total">
+                            <span t-field="line.price_subtotal" />
+                        </div>
+                    </t>
+
+                    <t t-if="line.display_type == 'line_section'">
+                        <div class="proyesur_col"
+                            style="width: 100%; font-weight: bold; background-color: #f8f9fa;">
+                            <span t-field="line.name" />
+                        </div>
+                        <t t-set="current_section" t-value="line" />
+                        <t t-set="current_subtotal" t-value="0" />
+                    </t>
+
+                    <t t-if="line.display_type == 'line_note'">
+                        <div class="proyesur_col" style="width: 100%; font-style: italic;">
+                            <t t-foreach="(line.name or '').split('\n')" t-as="note_line">
+                                <p t-if="note_line.strip()" t-esc="note_line" />
+                            </t>
+                        </div>
+                    </t>
+
+                    <div style="clear: both;" />
+                </div>
+
+                <!-- Subtotal de sección -->
+                <t
+                    t-if="current_section and (line_last or lines_to_report[line_index+1].display_type == 'line_section')">
+                    <div
+                        style="width: 100%; text-align: right; padding: 5px 0; border-bottom: 1px solid #333;">
+                        <strong>Subtotal: </strong>
+                        <span t-out="current_subtotal"
+                            t-options='{"widget": "monetary", "display_currency": doc.currency_id}' />
+                    </div>
+                </t>
+            </t>
+        </xpath>
+
+    </template>
+</odoo>
