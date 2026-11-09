@@ -19,6 +19,16 @@ class HrAttendance(models.Model):
         store=True,
         readonly=True,
     )
+    employee_cost_per_day = fields.Monetary(
+        string="Coste/día",
+        related="employee_id.cost_per_day",
+        currency_field="employee_currency_id",
+        groups="hr.group_hr_user",
+        help="Coste/día fijo definido en la ficha del empleado.",
+    )
+    employee_currency_id = fields.Many2one(
+        related="employee_id.company_id.currency_id", string="Moneda"
+    )
     daily_cost = fields.Float(
         string="Coste del día",
         compute="_compute_daily_cost",

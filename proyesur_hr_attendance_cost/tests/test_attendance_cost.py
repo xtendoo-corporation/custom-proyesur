@@ -57,3 +57,10 @@ class TestAttendanceCost(TransactionCase):
         self.assertEqual(att.coste_total, 0.0)
         att.write({"check_out": datetime(2026, 1, 5, 12)})
         self.assertEqual(att.coste_total, 40.0)
+
+    def test_employee_cost_per_day_shown_in_attendance(self):
+        self.employee.cost_per_day = 80.0
+        att = self._att(5, 8, 12)
+        self.assertEqual(att.employee_cost_per_day, 80.0)
+        self.employee.cost_per_day = 90.0
+        self.assertEqual(att.employee_cost_per_day, 90.0)
